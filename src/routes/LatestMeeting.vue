@@ -7,6 +7,11 @@
 <script>
 export default {
   name: 'LatestMeeting',
+  _router: {
+    path: '/',
+    name: 'LatestMeeting',
+    component: resolve => require.ensure([], () => resolve(require('./LatestMeeting')), 'LatestMeeting')
+  },
   data () {
     return {
       msg: 'Welcome to Component LatestMeeting'
