@@ -14,6 +14,9 @@ var webpackConfig = process.env.NODE_ENV === 'testing'
   ? require('./webpack.prod.conf')
   : require('./webpack.dev.conf')
 
+require('babel-register')
+var indexRoutes = require('../middleware/indexRoutes')
+
 // default port where dev server listens for incoming traffic
 var port = process.env.PORT || config.dev.port
 // automatically open browser, if not set will be false
@@ -41,6 +44,10 @@ compiler.plugin('compilation', function (compilation) {
     cb()
   })
 })
+
+// register custom middleware
+
+app.use(indexRoutes)
 
 // proxy api requests
 Object.keys(proxyTable).forEach(function (context) {

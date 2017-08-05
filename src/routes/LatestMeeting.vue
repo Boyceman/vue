@@ -8,8 +8,8 @@
 export default {
   name: 'LatestMeeting',
   _router: {
+    name,
     path: '/',
-    name: 'LatestMeeting',
     component: resolve => require.ensure([], () => resolve(require('./LatestMeeting')), 'LatestMeeting')
   },
   data () {

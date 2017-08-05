@@ -8,8 +8,8 @@
 export default {
   name: 'PageNotFound',
   _router: {
+    name,
     path: '*',
-    name: 'PageNotFound',
     component: resolve => require.ensure([], () => resolve(require('./PageNotFound')), 'PageNotFound')
   },
   data () {
