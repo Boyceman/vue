@@ -1,4 +1,4 @@
 module.exports = [
-  'Tabbar',
-  'TabItem'
+  'TabContainer',
+  'TabContainerItem'
 ]

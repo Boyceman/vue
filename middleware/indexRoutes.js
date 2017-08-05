@@ -36,3 +36,4 @@ export default combineRoutes(routes)
   next()
 }
 
+// TODO add hot reload
