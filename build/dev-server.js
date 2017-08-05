@@ -16,6 +16,7 @@ var webpackConfig = process.env.NODE_ENV === 'testing'
 
 require('babel-register')
 var indexRoutes = require('../middleware/indexRoutes')
+var mintUI = require('../middleware/mintUI')
 
 // default port where dev server listens for incoming traffic
 var port = process.env.PORT || config.dev.port
@@ -48,6 +49,7 @@ compiler.plugin('compilation', function (compilation) {
 // register custom middleware
 
 app.use(indexRoutes)
+app.use(mintUI)
 
 // proxy api requests
 Object.keys(proxyTable).forEach(function (context) {

@@ -4,6 +4,7 @@ import Vue from 'vue'
 import App from './containers/App'
 import router from './routes/router'
 import 'lib-flexible'
+import './mintUI'
 
 Vue.config.productionTip = false
 
