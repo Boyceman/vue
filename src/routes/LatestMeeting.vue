@@ -1,23 +1,33 @@
 <template>
   <div class="LatestMeeting">
-    {{ msg }}
+    <Cell v-for="(cell, index) in cells" :key="index" :cell="cell"></Cell>
   </div>
 </template>
 
 <script>
-export default {
-  name: 'LatestMeeting',
-  _router: {
-    name,
-    path: '/',
-    component: resolve => require.ensure([], () => resolve(require('./LatestMeeting')), 'LatestMeeting')
-  },
-  data () {
-    return {
-      msg: 'Welcome to Component LatestMeeting'
+  import Cell from '@/components/Cell'
+
+  export default {
+    name: 'LatestMeeting',
+    components: {
+      Cell
+    },
+    _router: {
+      name,
+      path: '/',
+      component: resolve => require.ensure([], () => resolve(require('./LatestMeeting')), 'LatestMeeting')
+    },
+    data () {
+      return {
+        cells: [
+          {
+            title: 'hello 3c',
+            image: 'http://placehold.it/100x100'
+          }
+        ]
+      }
     }
   }
-}
 </script>
 
 <style scoped lang="scss" rel="stylesheet/scss" type="text/scss">

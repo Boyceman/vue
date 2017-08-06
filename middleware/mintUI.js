@@ -7,7 +7,9 @@ let timer
 module.exports = function (req, res, next) {
   clearTimeout(timer)
   timer = setTimeout(function () {
-    const printVueUse = () => (mintUIConf.map(component => (`Vue.use(${component})\n`)).join(''))
+    const printVueUse = () => (mintUIConf.map(component => (
+        `Vue.component(${component}.name, ${component})\n`)).join('')
+    )
     const mintUI = `import Vue from 'vue'
 import 'mint-ui/lib/style.css'
 import {

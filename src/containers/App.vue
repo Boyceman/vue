@@ -1,30 +1,34 @@
 <template>
   <div id="app">
-    <img src="../assets/logo.png">
-    <router-view></router-view>
-    <TabBar></TabBar>
+    <TabBarLayout>
+      <router-view></router-view>
+    </TabBarLayout>
   </div>
 </template>
 
 <script>
   import '../mintUI'
-  import TabBar from '../layouts/TabBar'
+  import TabBarLayout from '@/layouts/tab-bar-layout'
 
   export default {
     name: 'app',
     components: {
-      TabBar
+      TabBarLayout
     }
   }
 </script>
 
-<style lang="scss">
+<style lang="scss" rel="stylesheet/scss" type="text/scss">
   #app {
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
     color: #2c3e50;
-    margin-top: 60px;
   }
+
+  @function p2r($px) {
+    @return $px / 75 * 1rem;
+  }
+
 </style>

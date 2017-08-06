@@ -42,7 +42,7 @@ ul {
   padding: 0;
   li {
     display: inline-block;
-    margin: 0 .1rem;
+    margin: 0 100px;
     a {
       color: #42b983;
     }
