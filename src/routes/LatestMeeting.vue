@@ -1,16 +1,18 @@
 <template>
   <div class="LatestMeeting">
-    <Cell v-for="(cell, index) in cells" :key="index" :cell="cell"></Cell>
+    <cell v-for="(cell, index) in cells" :key="index" :cell="cell"></cell>
   </div>
 </template>
 
 <script>
   import Cell from '@/components/Cell'
+  import TabBarLayout from '@/layouts/tab-bar-layout'
 
   export default {
     name: 'LatestMeeting',
     components: {
-      Cell
+      Cell,
+      TabBarLayout
     },
     _router: {
       name,

@@ -4,29 +4,27 @@
       :id="tabBar.clazz" @click.native="navigator(tabBar.path)">
       <img slot="icon" :src="tabBar.icon">
       {{ tabBar.display }}
-     </mt-tab-item>
+    </mt-tab-item>
   </mt-tabbar>
 </template>
 
 <script>
-export default {
-  name: 'TabBar',
-  props: ['tabBars'],
-  data () {
-    // TODO status manager (vuex?)
-    const currentPath = this.$route.path.split('/')[1]
-    console.log(currentPath, 888)
-    return {
-      active: currentPath
-    }
-  },
-  methods: {
-    navigator: function (path) {
-      console.log(path)
-      this.$emit('navigator', path)
+  export default {
+    name: 'TabBar',
+    props: ['tabBars', '_active'],
+    data () {
+      console.log(`%c${this.$props._active}`, 'background: orange')
+      return {
+        active: this.$store.getters['tabBar-active']
+      }
+    },
+    computed: {},
+    methods: {
+      navigator: function (path) {
+        this.$router.push(path)
+      }
     }
   }
-}
 </script>
 
 <style scoped lang="scss" rel="stylesheet/scss" type="text/scss">

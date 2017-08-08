@@ -1,6 +1,7 @@
 <template>
   <div class="TabBarLayout">
-    <TabBar :tabBars="tabBars" @navigator="navigator"></TabBar>
+    <router-view></router-view>
+    <tab-bar :tabBars="tabBars" :_active="active"></tab-bar>
   </div>
 </template>
 
@@ -16,9 +17,10 @@
     },
     data () {
       return {
+        active: this.$route.path,
         tabBars: [
           {
-            clazz: 'LatestMeeting',
+            clazz: 'latest',
             display: '最近会议',
             path: LatestMeeting.path,
             icon: 'http://placehold.it/100x100'
@@ -44,9 +46,26 @@
         ]
       }
     },
+    mounted () {
+      this.$utils.logs.group('mounted', this.active)
+    },
+    watch: {
+      '$route' (to) {
+        this.trackActive(this.tabBars, to.path)
+        // 对路由变化作出响应...
+      }
+    },
     methods: {
-      navigator: function (path) {
-        this.$router.push(path)
+      trackActive: function (tabBars, path) {
+        let active = ''
+        tabBars.forEach(item => {
+          if (path === item.path) {
+            active = item.clazz
+          }
+        })
+//        this.$store.commit('tabBar-active', { active })
+        this.$utils.logs.group('trackActive', this.active)
+        this.$set(this.$data, 'active', active)
       }
     }
   }

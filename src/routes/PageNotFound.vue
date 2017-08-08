@@ -5,19 +5,19 @@
 </template>
 
 <script>
-export default {
-  name: 'PageNotFound',
-  _router: {
-    name,
-    path: '*',
-    component: resolve => require.ensure([], () => resolve(require('./PageNotFound')), 'PageNotFound')
-  },
-  data () {
-    return {
-      msg: 'Welcome to Component PageNotFound'
+  export default {
+    name: 'PageNotFound',
+    _router: {
+      name,
+      path: '*',
+      component: resolve => require.ensure([], () => resolve(require('./PageNotFound')), 'PageNotFound')
+    },
+    data () {
+      return {
+        msg: 'Welcome to Component PageNotFound'
+      }
     }
   }
-}
 </script>
 
 <style scoped lang="scss" rel="stylesheet/scss" type="text/scss">
