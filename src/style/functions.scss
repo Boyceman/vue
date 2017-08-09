@@ -1,0 +1,10 @@
+@function p2r($px) {
+  @return $px / 75 * 1rem;
+}
+
+@mixin Ellipsis($width: 100%) {
+  width: $width;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}

@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <header-layout></header-layout>
     <router-view></router-view>
     <tab-bar-layout></tab-bar-layout>
   </div>
@@ -11,12 +12,16 @@
   export default {
     name: 'app',
     components: {
-      'tab-bar-layout': () => import('@/layouts/TabBarLayout')
+      'TabBarLayout': () => import('@/layouts/TabBarLayout'),
+      'HeaderLayout': () => import('@/layouts/HeaderLayout')
     }
   }
 </script>
 
 <style lang="scss" rel="stylesheet/scss" type="text/scss">
+  @import "../style/reset";
+  @import "../style/iconfont.css";
+
   #app {
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
@@ -25,8 +30,11 @@
     color: #2c3e50;
   }
 
-  @function p2r($px) {
-    @return $px / 75 * 1rem;
+  body {
+    background: #f8f8f8;
   }
 
+  .iconfont {
+    color: #ffffff;
+  }
 </style>

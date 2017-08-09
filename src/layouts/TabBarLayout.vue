@@ -11,7 +11,7 @@
   export default {
     name: 'TabBarLayout',
     components: {
-      TabBar: () => import('@/components/TabBar')
+      'TabBar': () => import('@/components/TabBar')
     },
     data () {
       return {
