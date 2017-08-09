@@ -1,23 +1,21 @@
 <template>
   <div class="TabBarLayout">
-    <router-view></router-view>
-    <tab-bar :tabBars="tabBars" :_active="active"></tab-bar>
+    <tab-bar :tabBars="tabBars"></tab-bar>
   </div>
 </template>
 
 <script>
   import { _router as LatestMeeting } from '@/routes/LatestMeeting'
   import { _router as HistoryMeeting } from '@/routes/HistoryMeeting'
-  import TabBar from '@/components/TabBar'
 
   export default {
     name: 'TabBarLayout',
     components: {
-      TabBar
+      TabBar: () => import('@/components/TabBar')
     },
     data () {
       return {
-        active: this.$route.path,
+        active: '',
         tabBars: [
           {
             clazz: 'latest',
@@ -47,25 +45,19 @@
       }
     },
     mounted () {
-      this.$utils.logs.group('mounted', this.active)
-    },
-    watch: {
-      '$route' (to) {
-        this.trackActive(this.tabBars, to.path)
-        // 对路由变化作出响应...
-      }
+      const active = this.trackActive()
+      this.$store.commit('tabBar-active', { active })
+      this.$utils.logs.group('layout mounted', this.$route.path)
     },
     methods: {
-      trackActive: function (tabBars, path) {
+      trackActive: function () {
         let active = ''
-        tabBars.forEach(item => {
-          if (path === item.path) {
+        this.tabBars.forEach(item => {
+          if (this.$route.path === item.path) {
             active = item.clazz
           }
         })
-//        this.$store.commit('tabBar-active', { active })
-        this.$utils.logs.group('trackActive', this.active)
-        this.$set(this.$data, 'active', active)
+        return active
       }
     }
   }

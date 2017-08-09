@@ -1,17 +1,17 @@
 <template>
   <div id="app">
+    <router-view></router-view>
     <tab-bar-layout></tab-bar-layout>
   </div>
 </template>
 
 <script>
   import '../mintUI'
-  import TabBarLayout from '@/layouts/tab-bar-layout'
 
   export default {
     name: 'app',
     components: {
-      TabBarLayout
+      'tab-bar-layout': () => import('@/layouts/TabBarLayout')
     }
   }
 </script>

@@ -6,13 +6,11 @@
 
 <script>
   import Cell from '@/components/Cell'
-  import TabBarLayout from '@/layouts/tab-bar-layout'
 
   export default {
     name: 'LatestMeeting',
     components: {
-      Cell,
-      TabBarLayout
+      Cell
     },
     _router: {
       name,

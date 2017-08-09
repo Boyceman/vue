@@ -5,7 +5,6 @@
 </template>
 
 <script>
-  import TabBarLayout from '@/layouts/tab-bar-layout'
   export default {
     name: 'HistoryMeeting',
     _router: {
@@ -13,9 +12,7 @@
       path: '/history-meeting',
       component: resolve => require.ensure([], () => resolve(require('./HistoryMeeting')), 'HistoryMeeting')
     },
-    components: {
-      TabBarLayout
-    },
+    components: {},
     data () {
       return {
         msg: 'Welcome to Component HistoryMeeting'

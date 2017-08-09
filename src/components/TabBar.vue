@@ -11,14 +11,15 @@
 <script>
   export default {
     name: 'TabBar',
-    props: ['tabBars', '_active'],
+    props: ['tabBars'],
     data () {
-      console.log(`%c${this.$props._active}`, 'background: orange')
       return {
         active: this.$store.getters['tabBar-active']
       }
     },
-    computed: {},
+    mounted () {
+      this.$utils.logs.group('tabBar mounted', this.$route.path)
+    },
     methods: {
       navigator: function (path) {
         this.$router.push(path)
