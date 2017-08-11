@@ -1,6 +1,6 @@
 <template>
   <div class="HistoryMeeting">
-    <select-bar :options="options" :types="types"></select-bar>
+    <select-bar :options="options" :types="types" :onclick="handleClick"></select-bar>
     <infinite-scroll-list :cells="cells" :fetchCells="fetchCells" :loading="loading"></infinite-scroll-list>
   </div>
 </template>
@@ -23,7 +23,7 @@
     data () {
       this.fetchCells()
       return {
-        options: [1, 2, 3],
+        options: ['IR路演', '分析师路演', '产品路演', '论坛峰会', '金融培训', '其他'],
         types: ['类型', '领域', '时间'],
         loading: false,
         cells: []
@@ -40,6 +40,9 @@
             this.loading = false
           }, 800)
         }, filedDate => console.log(filedDate))
+      },
+      handleClick () {
+        console.log(2222)
       }
     }
   }

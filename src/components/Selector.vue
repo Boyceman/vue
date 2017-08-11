@@ -1,6 +1,6 @@
 <template>
   <div class="Selector">
-    <div class="select">{{ type }}</div>
+    <div class="select" :class="clazz" @click="handleClick">{{ type }}</div>
   </div>
 </template>
 
@@ -8,9 +8,18 @@
   export default {
     name: 'Selector',
     components: {},
-    props: ['type'],
+    props: ['type', 'onclick'],
     data () {
-      return {}
+      return {
+        clazz: ''
+      }
+    },
+    methods: {
+      handleClick () {
+        console.log(111)
+        this.clazz = this.clazz ? '' : 'active'
+        this.$props.onclick()
+      }
     }
   }
 </script>
@@ -28,10 +37,22 @@
       color: #666666;
       line-height: p2r(55);
       height: p2r(55);
+      position: relative;
       &:after {
-        content: '‹';
-        display: inline-block;
-        transform: rotate(-90deg) translate(0, p2r(10));
+        content: '';
+        width: 8px;
+        height: 4.5px;
+        position: absolute;
+        top: p2r(26);
+        right: p2r(66);
+        transition: transform .3s ease-in-out;
+        transform-origin: 50% 0;
+        background: url("../assets/type.png") no-repeat center / cover;
+      }
+      &.active {
+        &:after {
+          transform: rotateX(180deg);
+        }
       }
     }
     &:not(:first-child) {

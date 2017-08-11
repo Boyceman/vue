@@ -23,7 +23,6 @@
       return {}
     },
     mounted () {
-      console.log(this.$parent.$el, 888)
       this.$parent.$el.addEventListener('scroll', this.handleScroll, false)
     },
     methods: {
