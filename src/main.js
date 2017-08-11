@@ -6,6 +6,9 @@ import createStore from './store'
 import utils from './utils'
 import App from './containers/App'
 import router from './routes/router'
+import resource from 'vue-resource'
+
+Vue.use(resource)
 
 Vue.config.productionTip = false
 

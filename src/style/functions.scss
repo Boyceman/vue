@@ -8,3 +8,15 @@
   overflow: hidden;
   white-space: nowrap;
 }
+
+@mixin PlaceholderTransform() {
+  animation: PlaceholderAnimate .8s ease-in-out forwards;
+  @keyframes PlaceholderAnimate {
+    0% {
+      width: 0;
+    }
+    100% {
+      width: 100%;
+    }
+  }
+}

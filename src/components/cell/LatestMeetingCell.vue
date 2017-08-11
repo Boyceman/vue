@@ -1,5 +1,5 @@
 <template>
-  <div class="Cell">
+  <div class="LatestMeetingCell">
     <img class="image" :src="image">
     <div class="text">
       <h2 class="title">{{ title }}</h2>
@@ -12,7 +12,7 @@
 
 <script>
   export default {
-    name: 'Cell',
+    name: 'LatestMeetingCell',
     props: ['cell'],
     data () {
       const { image, title, date, name, organization } = this.$props.cell
@@ -24,34 +24,40 @@
 </script>
 
 <style scoped lang="scss" rel="stylesheet/scss" type="text/scss">
-  @import "../style/functions";
+  @import "../../style/functions";
 
-  .Cell {
+  .LatestMeetingCell {
     overflow: hidden;
-    padding: p2r(30) p2r(35);
+    padding: p2r(30) p2r(60) p2r(30) p2r(35);
     background: #fff;
     border: 1px solid #eee;
     border-left: none;
     border-right: none;
-    margin-bottom: p2r(10);
+    &:not(:first-child) {
+      margin-Top: p2r(10);
+    }
     .image {
       float: left;
       margin-right: p2r(35);
+      width: p2r(122);
+      height: p2r(112);
     }
     .text {
       text-align: left;
+      overflow: hidden;
       .title {
+        margin-top: p2r(-6);
         font-size: p2r(30);
-        line-height: 1;
         color: #333333;
-        height: p2r(30);
         @include Ellipsis(auto);
-        margin-bottom: p2r(22);
-        line-height: 1;
+        margin-bottom: p2r(10);
       }
       p, span {
         font-size: p2r(20);
         color: #999999;
+      }
+      .date {
+        line-height: 1.3;
       }
     }
   }

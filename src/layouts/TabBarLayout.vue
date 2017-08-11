@@ -21,25 +21,25 @@
             clazz: 'latest',
             display: '最近会议',
             path: LatestMeeting.path,
-            icon: 'http://placehold.it/100x100'
+            icon: 'icon-training'
           },
           {
             clazz: 'HistoryMeeting',
             display: '历史会议',
             path: HistoryMeeting.path,
-            icon: 'http://placehold.it/100x100'
+            icon: 'icon-Meeting-Participants'
           },
           {
-            clazz: 'MineMeeting',
-            display: '我的会议',
+            clazz: 'news',
+            display: '会议资讯',
             path: '',
-            icon: 'http://placehold.it/100x100'
+            icon: 'icon-survey'
           },
           {
-            clazz: 'offline',
-            display: '线下会议',
+            clazz: 'account',
+            display: '个人中心',
             path: '',
-            icon: 'http://placehold.it/100x100'
+            icon: 'icon-account'
           }
         ]
       }

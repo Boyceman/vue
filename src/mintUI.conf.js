@@ -4,6 +4,7 @@ module.exports = [
   'Tabbar',
   'Search',
   'TabItem',
+  'Spinner',
   'TabContainer',
   'TabContainerItem'
 ]
