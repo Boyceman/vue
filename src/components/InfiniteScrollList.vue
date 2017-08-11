@@ -1,7 +1,7 @@
 <template>
   <div class="InfiniteScrollList">
     <div class="wrap" ref="wrap">
-      <placeholder-cell v-if="!cells.length" v-for="n in 5" :key="n"></placeholder-cell>
+      <placeholder-cell v-if="!cells.length" v-for="n in 10" :key="n"></placeholder-cell>
       <latest-meeting-cell v-for="(cell, index) in cells" :key="index" :cell="cell"
         :clazz="cell.class" ref="cell"></latest-meeting-cell>
       <mt-spinner v-show="loading" type="double-bounce"></mt-spinner>
@@ -23,6 +23,7 @@
       return {}
     },
     mounted () {
+      console.log(this.$parent.$el, 888)
       this.$parent.$el.addEventListener('scroll', this.handleScroll, false)
     },
     methods: {
