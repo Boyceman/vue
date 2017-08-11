@@ -1,6 +1,8 @@
 <template>
-  <div class="LatestMeetingCell">
-    <img class="image" :src="image">
+  <div class="LatestMeetingCell" :class="clazz">
+    <div class="image">
+      <img :src="image">
+    </div>
     <div class="text">
       <h2 class="title">{{ title }}</h2>
       <p class="date">{{ date }}</p>
@@ -13,7 +15,7 @@
 <script>
   export default {
     name: 'LatestMeetingCell',
-    props: ['cell'],
+    props: ['cell', 'clazz'],
     data () {
       const { image, title, date, name, organization } = this.$props.cell
       return {
@@ -34,13 +36,18 @@
     border-left: none;
     border-right: none;
     &:not(:first-child) {
-      margin-Top: p2r(10);
+      margin-top: p2r(10);
     }
     .image {
       float: left;
       margin-right: p2r(35);
+      background: #d52535;
       width: p2r(122);
       height: p2r(112);
+      img {
+        width: p2r(122);
+        height: p2r(112);
+      }
     }
     .text {
       text-align: left;

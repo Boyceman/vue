@@ -2,7 +2,8 @@
   <div class="InfiniteScrollList">
     <div class="wrap" ref="wrap">
       <placeholder-cell v-if="!cells.length" v-for="n in 5" :key="n"></placeholder-cell>
-      <latest-meeting-cell v-for="(cell, index) in cells" :key="index" :cell="cell" ref="cell"></latest-meeting-cell>
+      <latest-meeting-cell v-for="(cell, index) in cells" :key="index" :cell="cell"
+        :clazz="cell.class" ref="cell"></latest-meeting-cell>
       <mt-spinner v-show="loading" type="double-bounce"></mt-spinner>
     </div>
   </div>
@@ -10,6 +11,7 @@
 
 <script>
   import throttle from '@/utils/throttle'
+  import { loadMore, hiddenOutViewport } from '@/utils/list'
   import PlaceholderCell from '@/components/cell/PlaceholderCell'
   import LatestMeetingCell from '@/components/cell/LatestMeetingCell'
 
@@ -25,35 +27,16 @@
     },
     methods: {
       handleScroll: throttle(function () {
-        const wrap = this.$refs.wrap
-        const wrapPaddingTop = Math.ceil(parseFloat(window.getComputedStyle(wrap).paddingTop))
-        const wrapHeight = parseInt(window.getComputedStyle(wrap).height) + wrapPaddingTop * 2
-        const view = this.$parent.$el
-        const viewHeight = parseInt(window.getComputedStyle(view).height)
-        const viewScrollTop = view.scrollTop
-        const diff = wrapHeight - viewHeight - viewScrollTop
-
-        this.$utils.logs.group('diff', diff, 'black')
-        console.log(`viewHeight: ${viewHeight}\nwrapHeight: ${wrapHeight}`)
-
-        const cells = this.$refs.cell
-        const rects = cells.map(item => {
-          const rect = item.$el.getBoundingClientRect()
-          return rect
-        })
-        console.log(rects[0].top, 'first cell top')
-        console.log(rects[0].height, 'first cell height')
-
-        if (diff <= 0 && !this.$props.loading) {
-          this.$utils.logs.group('diff', diff, 'red')
-          this.$props.fetchCells()
-        }
-      })
+        loadMore.bind(this)()
+        hiddenOutViewport.bind(this)()
+      }, 50)
     }
   }
 </script>
 
 <style lang="scss" rel="stylesheet/scss" type="text/scss">
+  @import "../style/functions";
+
   .InfiniteScrollList {
     .wrap {
       padding: p2r(10) 0;
