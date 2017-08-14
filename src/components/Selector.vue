@@ -1,6 +1,6 @@
 <template>
   <div class="Selector">
-    <div class="select" :class="clazz" @click="handleClick">{{ type }}</div>
+    <div class="select" @click="handleClick">{{ type }}</div>
   </div>
 </template>
 
@@ -8,17 +8,13 @@
   export default {
     name: 'Selector',
     components: {},
-    props: ['type', 'onclick'],
+    props: ['type', 'onclick', 'index'],
     data () {
-      return {
-        clazz: ''
-      }
+      return {}
     },
     methods: {
       handleClick () {
-        console.log(111)
-        this.clazz = this.clazz ? '' : 'active'
-        this.$props.onclick()
+        this.$props.onclick(this.$props.index)
       }
     }
   }
@@ -49,7 +45,9 @@
         transform-origin: 50% 0;
         background: url("../assets/type.png") no-repeat center / cover;
       }
-      &.active {
+    }
+    &.active {
+      .select {
         &:after {
           transform: rotateX(180deg);
         }

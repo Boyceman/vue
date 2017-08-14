@@ -1,9 +1,11 @@
 <template>
   <div class="SelectBar">
-    <selector v-for="(type, index) in types" :key="index" :type="type" :onclick="onclick"></selector>
-    <ul class="sub">
-      <li v-for="(option, index) in options" :key="index" class="option" :class="active">
-        {{ option }}
+    <selector v-for="(option, index) in options" :key="index" :type="option.name" :index="index"
+      :onclick="handleClick" :class="index === active ? 'active' : ''">
+    </selector>
+    <ul class="sub" :class="typeof(active) === 'number' ? 'active' : ''">
+      <li v-for="(child, index) in children" :key="index" class="option">
+        {{ child }}
       </li>
     </ul>
   </div>
@@ -19,10 +21,21 @@
       component: resolve => require.ensure([], () => resolve(require('./SelectBar')), 'SelectBar')
     },
     components: { Selector },
-    props: ['options', 'types', 'onclick'],
+    props: ['options', 'onclick'],
     data () {
       return {
-        active: ''
+        active: '',
+        children: []
+      }
+    },
+    methods: {
+      handleClick (index) {
+        for (let i = 0, len = this.$props.options.length; i < len; i++) {
+          if (index === i) {
+            this.children = this.$props.options[i].children
+          }
+        }
+        index !== this.active ? this.active = index : this.active = ''
       }
     }
   }
@@ -39,13 +52,15 @@
     border-bottom: 1px solid #eee;
     background: #fff;
     .sub {
-      display: none;
       position: absolute;
       top: 100%;
       width: 100%;
-      height: 100vh;
+      height: 0;
       background: rgba(0, 0, 0, .5);
+      transition: height .2s ease-in-out;
+      overflow: scroll;
       .option {
+        box-sizing: border-box;
         background: #fff;
         color: #999999;
         width: 100%;
@@ -57,6 +72,9 @@
         &.active {
           color: #dd2637;
         }
+      }
+      &.active {
+        height: calc(100vh - 50px - 36px)
       }
     }
   }
