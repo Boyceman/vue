@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <nav-bar></nav-bar>
+    <nav-bar v-if="nav"></nav-bar>
     <router-view></router-view>
     <tab-bar :tabBars="tabBars"></tab-bar>
   </div>
@@ -21,6 +21,7 @@
     },
     data () {
       return {
+        nav: true,
         active: '',
         tabBars: [
           {
@@ -56,6 +57,9 @@
           this.active = item.clazz
         }
       })
+    },
+    updated () {
+      this.nav = this.$store.getters['tabBar-active'] !== 'account'
     }
   }
 </script>

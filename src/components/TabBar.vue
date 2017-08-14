@@ -1,7 +1,7 @@
 <template>
   <mt-tabbar class="TabBar" v-model="active">
     <mt-tab-item v-for="(tabBar, index) in tabBars" :key="tabBar.clazz"
-      :id="tabBar.clazz" @click.native="navigator(tabBar.path)">
+      :id="tabBar.clazz" @click.native="navigator(tabBar)">
       <i slot="icon" class="iconfont" :class="tabBar.icon"></i>
       {{ tabBar.display }}
     </mt-tab-item>
@@ -14,7 +14,7 @@
     props: ['tabBars'],
     data () {
       return {
-        active: ''
+        active: this.$store.getters['tabBar-active']
       }
     },
     mounted () {
@@ -22,12 +22,14 @@
       this.$props.tabBars.forEach(item => {
         if (this.$route.path === item.path) {
           this.active = item.clazz
+          this.$store.commit('tabBar-active', { active: item.clazz })
         }
       })
     },
     methods: {
-      navigator: function (path) {
-        this.$router.push(path)
+      navigator: function (tabBar) {
+        this.$store.commit('tabBar-active', { active: tabBar.clazz })
+        this.$router.push(tabBar.path)
       }
     }
   }

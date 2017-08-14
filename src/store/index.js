@@ -4,18 +4,15 @@ import * as logs from '@/utils/logs'
 
 Vue.use(Vuex)
 
-export default (initialState = {
-  tabBar: {
-    active: 'latest'
-  }
-}, mutations = {
-  'tabBar-active': function (state, payload) {
-    state.tabBar = {
-      ...payload
+export default (
+  initialState = { tabBar: { active: 'latest' } },
+  mutations = {
+    'tabBar-active': function (state, payload) {
+      state.tabBar = { ...payload }
+      logs.group('state tabBar', payload)
     }
-    logs.group('state tabBar', payload)
   }
-}) => {
+) => {
   return new Vuex.Store({
     state: {
       ...initialState
