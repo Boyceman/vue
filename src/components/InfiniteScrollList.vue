@@ -4,7 +4,7 @@
       <placeholder-cell v-if="!cells.length" v-for="n in 10" :key="n"></placeholder-cell>
       <latest-meeting-cell v-for="(cell, index) in cells" :key="index" :cell="cell"
         :clazz="cell.class" ref="cell"></latest-meeting-cell>
-      <mt-spinner v-show="loading" type="double-bounce"></mt-spinner>
+      <mt-spinner type="double-bounce"></mt-spinner>
     </div>
   </div>
 </template>
@@ -29,7 +29,7 @@
       handleScroll: throttle(function () {
         loadMore.bind(this)()
         hiddenOutViewport.bind(this)()
-      }, 20)
+      })
     }
   }
 </script>

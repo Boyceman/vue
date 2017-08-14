@@ -18,7 +18,7 @@ export function loadMore () {
 
 export function hiddenOutViewport () {
   const cells = this.$refs.cell
-  if (cells.length <= 50) return false
+  if (!cells || cells.length <= 50) return false
 
   const buffer = 1000
   cells.forEach(item => {

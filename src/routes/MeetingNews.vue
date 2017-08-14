@@ -61,7 +61,9 @@
   @import "../style/functions";
 
   .MeetingNews {
-    max-height: p2r(1132);
+    -webkit-overflow-scrolling: touch;
+    height: calc(100% - 95px);
+    z-index: 1;
     overflow: scroll;
     width: 100%;
     .InfiniteScrollList {

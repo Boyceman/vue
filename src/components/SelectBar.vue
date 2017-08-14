@@ -47,6 +47,7 @@
   .SelectBar {
     z-index: 2;
     position: fixed;
+    top: p2r(90);
     width: 100%;
     display: flex;
     border-bottom: 1px solid #eee;

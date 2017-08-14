@@ -1,5 +1,6 @@
 <template>
   <div class="Account">
+    <title-h1 :title="title"></title-h1>
     {{ msg }}
   </div>
 </template>
@@ -12,9 +13,12 @@
       path: '/account',
       component: resolve => require.ensure([], () => resolve(require('./Account')), 'Account')
     },
-    components: {},
+    components: {
+      'TitleH1': () => import('@/components/Title')
+    },
     data () {
       return {
+        title: '个人中心',
         msg: 'Welcome to Component Account'
       }
     }

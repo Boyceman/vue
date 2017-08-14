@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" @onscroll.default="">
     <nav-bar v-if="nav"></nav-bar>
     <router-view></router-view>
     <tab-bar :tabBars="tabBars"></tab-bar>
@@ -57,6 +57,10 @@
           this.active = item.clazz
         }
       })
+      const html = document.getElementsByTagName('html')[0]
+      html.addEventListener('touchmove', e => {
+        e.stopPropagation()
+      }, { passive: true })
     },
     updated () {
       this.nav = this.$store.getters['tabBar-active'] !== 'account'
@@ -68,12 +72,19 @@
   @import "../style/reset";
   @import "../style/iconfont.css";
 
+  html, body {
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+  }
+
   #app {
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
     color: #2c3e50;
+    height: 100%;
   }
 
   body {

@@ -28,7 +28,7 @@
     height: p2r(80);
     background: #dd2738;
     position: relative;
-    padding: p2r(10) 0;
+    padding: p2r(5) 0;
     .back {
       float: left;
       margin-left: p2r(18);

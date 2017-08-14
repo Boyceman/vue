@@ -50,8 +50,10 @@
 
   .LatestMeeting {
     width: 100%;
-    max-height: p2r(1122);
+    height: calc(100% - 95px);
     overflow: scroll;
+    -webkit-overflow-scrolling: touch;
+    z-index: 1;
   }
 
   .banner {
