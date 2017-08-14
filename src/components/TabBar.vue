@@ -14,11 +14,16 @@
     props: ['tabBars'],
     data () {
       return {
-        active: this.$store.getters['tabBar-active']
+        active: ''
       }
     },
     mounted () {
       this.$utils.logs.group('tabBar mounted', this.$route.path)
+      this.$props.tabBars.forEach(item => {
+        if (this.$route.path === item.path) {
+          this.active = item.clazz
+        }
+      })
     },
     methods: {
       navigator: function (path) {
@@ -33,9 +38,11 @@
 
   .TabBar {
     overflow: hidden;
+    height: p2r(100);
     .mint-tab-item {
       padding: 5px 0;
       .mint-tab-item-icon {
+        margin-bottom: p2r(5);
         .iconfont {
           font-size: p2r(48);
           position: relative;

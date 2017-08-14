@@ -54,6 +54,7 @@
   .HistoryMeeting {
     max-height: p2r(1132);
     overflow: scroll;
+    width: 100%;
     .InfiniteScrollList {
       padding-top: p2r(76);
     }

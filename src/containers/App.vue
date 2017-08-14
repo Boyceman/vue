@@ -1,19 +1,59 @@
 <template>
   <div id="app">
-    <header-layout></header-layout>
+    <nav-bar></nav-bar>
     <router-view></router-view>
-    <tab-bar-layout></tab-bar-layout>
+    <tab-bar :tabBars="tabBars"></tab-bar>
   </div>
 </template>
 
 <script>
   import '../mintUI'
+  import { _router as LatestMeeting } from '@/routes/LatestMeeting'
+  import { _router as HistoryMeeting } from '@/routes/HistoryMeeting'
 
   export default {
     name: 'app',
     components: {
-      'TabBarLayout': () => import('@/layouts/TabBarLayout'),
-      'HeaderLayout': () => import('@/layouts/HeaderLayout')
+      'TabBar': () => import('@/components/TabBar'),
+      'NavBar': () => import('@/components/NavBar')
+    },
+    data () {
+      return {
+        active: '',
+        tabBars: [
+          {
+            clazz: 'latest',
+            display: '最近会议',
+            path: LatestMeeting.path,
+            icon: 'icon-training'
+          },
+          {
+            clazz: 'HistoryMeeting',
+            display: '历史会议',
+            path: HistoryMeeting.path,
+            icon: 'icon-Meeting-Participants'
+          },
+          {
+            clazz: 'news',
+            display: '会议资讯',
+            path: '',
+            icon: 'icon-survey'
+          },
+          {
+            clazz: 'account',
+            display: '个人中心',
+            path: '',
+            icon: 'icon-account'
+          }
+        ]
+      }
+    },
+    mounted () {
+      this.tabBars.forEach(item => {
+        if (this.$route.path === item.path) {
+          this.active = item.clazz
+        }
+      })
     }
   }
 </script>
