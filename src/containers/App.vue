@@ -10,6 +10,8 @@
   import '../mintUI'
   import { _router as LatestMeeting } from '@/routes/LatestMeeting'
   import { _router as HistoryMeeting } from '@/routes/HistoryMeeting'
+  import { _router as MeetingNews } from '@/routes/MeetingNews'
+  import { _router as Account } from '@/routes/Account'
 
   export default {
     name: 'app',
@@ -28,7 +30,7 @@
             icon: 'icon-training'
           },
           {
-            clazz: 'HistoryMeeting',
+            clazz: 'history',
             display: '历史会议',
             path: HistoryMeeting.path,
             icon: 'icon-Meeting-Participants'
@@ -36,13 +38,13 @@
           {
             clazz: 'news',
             display: '会议资讯',
-            path: '',
+            path: MeetingNews.path,
             icon: 'icon-survey'
           },
           {
             clazz: 'account',
             display: '个人中心',
-            path: '',
+            path: Account.path,
             icon: 'icon-account'
           }
         ]

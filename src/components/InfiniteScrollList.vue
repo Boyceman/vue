@@ -29,7 +29,7 @@
       handleScroll: throttle(function () {
         loadMore.bind(this)()
         hiddenOutViewport.bind(this)()
-      }, 50)
+      }, 20)
     }
   }
 </script>
