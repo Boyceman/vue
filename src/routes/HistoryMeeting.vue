@@ -13,7 +13,7 @@
     name: 'HistoryMeeting',
     _router: {
       name,
-      path: '/history-meeting',
+      path: '/history',
       component: resolve => require.ensure([], () => resolve(require('./HistoryMeeting')), 'HistoryMeeting')
     },
     components: {

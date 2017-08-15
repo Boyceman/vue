@@ -13,7 +13,7 @@
     name: 'MeetingNews',
     _router: {
       name,
-      path: '/meeting-news',
+      path: '/news',
       component: resolve => require.ensure([], () => resolve(require('./MeetingNews')), 'MeetingNews')
     },
     components: {

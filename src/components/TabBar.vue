@@ -31,6 +31,15 @@
         this.$store.commit('tabBar-active', { active: tabBar.clazz })
         this.$router.push(tabBar.path)
       }
+    },
+    watch: {
+      '$route': function (to) {
+        this.$props.tabBars.forEach(tabBar => {
+          if (tabBar.path === to.path) {
+            this.active = tabBar.clazz
+          }
+        })
+      }
     }
   }
 </script>

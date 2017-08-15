@@ -31,6 +31,24 @@
     data () {
       return {
         title: '个人中心',
+        menu: [
+          {
+            name: '我的消息',
+            link: '/message'
+          },
+          {
+            name: '我的会议',
+            link: '/meeting'
+          },
+          {
+            name: '我的收藏',
+            link: '/collection'
+          },
+          {
+            name: '下载管理',
+            link: '/download'
+          }
+        ],
         info: {}
       }
     },
@@ -55,6 +73,7 @@
       text-align: left;
       border-bottom: 1px solid #eee;
       background: #fff;
+      height: p2r(155);
       .avatar {
         float: left;
         background: #ccc;

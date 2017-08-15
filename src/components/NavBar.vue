@@ -1,6 +1,6 @@
 <template>
   <header class="NavBar">
-    <span class="back"><i class="iconfont icon-back"></i></span>
+    <span v-if="this.$route.path === '/'" class="back" @click="()=>{this.$router.go(-1)}"><i class="iconfont icon-back"></i></span>
     <div class="search">
       <i class="iconfont icon-search"></i>
       <input type="text" class="input" v-model="value">

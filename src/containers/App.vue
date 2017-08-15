@@ -1,5 +1,5 @@
 <template>
-  <div id="app" @onscroll.default="">
+  <div id="app">
     <nav-bar v-if="nav"></nav-bar>
     <router-view></router-view>
     <tab-bar :tabBars="tabBars"></tab-bar>
@@ -63,8 +63,15 @@
         e.stopPropagation()
       }, { passive: true })
     },
-    updated () {
-      this.nav = this.$store.getters['tabBar-active'] !== 'account'
+    watch: {
+      '$route': function (to) {
+        this.tabBars.forEach(tabBar => {
+          if (tabBar.path === to.path) {
+            this.nav = tabBar.clazz !== 'account'
+            this.$store.commit('tabBar-active', { active: tabBar.clazz })
+          }
+        })
+      }
     }
   }
 </script>
