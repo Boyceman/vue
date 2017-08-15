@@ -2,7 +2,7 @@
   <div id="app">
     <nav-bar v-if="nav"></nav-bar>
     <router-view></router-view>
-    <tab-bar :tabBars="tabBars"></tab-bar>
+    <tab-bar v-if="tab" :tabBars="tabBars"></tab-bar>
   </div>
 </template>
 
@@ -23,6 +23,7 @@
     data () {
       return {
         nav: true,
+        tab: this.$store.getters['tabBar-if'],
         active: '',
         tabBars: [
           {

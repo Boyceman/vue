@@ -2,8 +2,8 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import 'lib-flexible'
 import Vue from 'vue'
-import createStore from './store'
 import utils from './utils'
+import store from './store'
 import App from './containers/App'
 import router from './routes/router'
 import resource from 'vue-resource'
@@ -23,7 +23,7 @@ new Vue({
   el: '#app',
   router,
   utils,
-  store: createStore(),
+  store,
   template: '<App/>',
   components: { App }
 })
