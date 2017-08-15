@@ -2,7 +2,7 @@
   <mt-tabbar class="TabBar" v-model="active">
     <mt-tab-item v-for="(tabBar, index) in tabBars" :key="tabBar.clazz"
       :id="tabBar.clazz" @click.native="navigator(tabBar)">
-      <i slot="icon" class="iconfont" :class="tabBar.icon"></i>
+      <i slot="icon" class="icon" :class="tabBar.clazz"></i>
       {{ tabBar.display }}
     </mt-tab-item>
   </mt-tabbar>
@@ -52,23 +52,55 @@
     height: p2r(100);
     .mint-tab-item {
       padding: 5px 0;
+      background: #333333 !important;
       .mint-tab-item-icon {
         margin-bottom: p2r(5);
-        .iconfont {
-          font-size: p2r(48);
-          position: relative;
-          color: #2c3e50;
-          &:before {
-            position: absolute;
-            left: 0;
-            top: p2r(-10);
+        .icon {
+          margin: 0 auto;
+          &.latest {
+            width: p2r(51);
+            height: p2r(42);
+            background: url('../assets/tab1.png') no-repeat center / cover;
+          }
+          &.history {
+            width: p2r(36);
+            height: p2r(42);
+            background: url('../assets/tab2.png') no-repeat center / cover;
+          }
+          &.news {
+            width: p2r(42);
+            height: p2r(42);
+            background: url('../assets/tab3.png') no-repeat center / cover;
+          }
+          &.account {
+            width: p2r(36);
+            height: p2r(42);
+            background: url('../assets/tab4.png') no-repeat center / cover;
           }
         }
       }
+      .mint-tab-item-label {
+        color: #666666;
+        transition: .3s ease-in-out;
+      }
       &.is-selected {
         color: #ff4949;
-        .iconfont:before {
-          color: #ff4949;
+        .icon {
+          &.latest {
+            background: url('../assets/tab11.png') no-repeat center / cover;
+          }
+          &.history {
+            background: url('../assets/tab21.png') no-repeat center / cover;
+          }
+          &.news {
+            background: url('../assets/tab31.png') no-repeat center / cover;
+          }
+          &.account {
+            background: url('../assets/tab41.png') no-repeat center / cover;
+          }
+        }
+        .mint-tab-item-label {
+          color: #999999;
         }
       }
     }

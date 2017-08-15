@@ -29,26 +29,22 @@
           {
             clazz: 'latest',
             display: '最近会议',
-            path: LatestMeeting.path,
-            icon: 'icon-training'
+            path: LatestMeeting.path
           },
           {
             clazz: 'history',
             display: '历史会议',
-            path: HistoryMeeting.path,
-            icon: 'icon-Meeting-Participants'
+            path: HistoryMeeting.path
           },
           {
             clazz: 'news',
             display: '会议资讯',
-            path: MeetingNews.path,
-            icon: 'icon-survey'
+            path: MeetingNews.path
           },
           {
             clazz: 'account',
             display: '个人中心',
-            path: Account.path,
-            icon: 'icon-account'
+            path: Account.path
           }
         ]
       }
