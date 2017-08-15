@@ -8,6 +8,7 @@
 
 <script>
   import '../mintUI'
+  import '@/mocks'
   import { _router as LatestMeeting } from '@/routes/LatestMeeting'
   import { _router as HistoryMeeting } from '@/routes/HistoryMeeting'
   import { _router as MeetingNews } from '@/routes/MeetingNews'
@@ -97,5 +98,9 @@
 
   .vh {
     visibility: hidden;
+  }
+
+  h1, h2, h3, h4, h5 {
+    font-weight: normal;
   }
 </style>

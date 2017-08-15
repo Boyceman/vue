@@ -18,7 +18,7 @@
       }
     },
     mounted () {
-      this.$utils.logs.group('tabBar mounted', this.$route.path)
+      this.$utils.logs.group('tabBar  --Mounted LifeCircle', this.$route.path)
       this.$props.tabBars.forEach(item => {
         if (this.$route.path === item.path) {
           this.active = item.clazz

@@ -34,6 +34,7 @@
       margin-left: p2r(18);
       .iconfont {
         font-size: 26px;
+        font-weight: 600;
       }
     }
     .add {
@@ -41,6 +42,7 @@
       margin-right: p2r(18);
       .iconfont {
         font-size: 26px;
+        font-weight: 600;
       }
     }
     .search {

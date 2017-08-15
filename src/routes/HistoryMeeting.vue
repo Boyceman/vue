@@ -44,7 +44,7 @@
     methods: {
       fetchCells () {
         this.loading = true
-        apiGenerator({}).then(response => {
+        apiGenerator({ url: '/list' }).then(response => {
           const { list } = response.body
           // TODO timer need to be removed when api was added
           setTimeout(() => {

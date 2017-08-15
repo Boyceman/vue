@@ -9,8 +9,6 @@
   import InfiniteScrollList from '@/components/InfiniteScrollList'
   import apiGenerator from '@/api'
 
-  import '@/utils/mock'
-
   export default {
     name: 'LatestMeeting',
     components: {
@@ -31,9 +29,10 @@
     methods: {
       fetchCells () {
         this.loading = true
-        apiGenerator({}).then(response => {
+        apiGenerator({ url: '/list' }).then(response => {
           const { list } = response.body
           // TODO timer need to be removed when api was added
+          console.log(list, 999)
           setTimeout(() => {
             this.cells = this.cells.concat(list)
             this.loading = false

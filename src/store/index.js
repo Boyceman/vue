@@ -9,7 +9,7 @@ export default (
   mutations = {
     'tabBar-active': function (state, payload) {
       state.tabBar = { ...payload }
-      logs.group('state tabBar', payload)
+      logs.group('tabBar  --Vuex', payload)
     }
   }
 ) => {

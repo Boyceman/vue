@@ -75,7 +75,7 @@
         }
       }
       &.active {
-        height: calc(100vh - 50px - 36px)
+        height: calc(100vh - 45px - 37px)
       }
     }
   }

@@ -11,7 +11,7 @@ export function loadMore () {
   const viewScrollTop = view.scrollTop
   const diff = wrapHeight - viewHeight - viewScrollTop
   if (diff <= 0 && !this.$props.loading) {
-    this.$utils.logs.group('load more', viewScrollTop, 'red')
+    this.$utils.logs.group('load more  --UI', viewScrollTop, 'red')
     this.$props.fetchCells()
   }
 }
