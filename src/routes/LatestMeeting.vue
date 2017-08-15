@@ -1,7 +1,12 @@
 <template>
   <div class="LatestMeeting" ref="view">
     <div class="banner"></div>
-    <infinite-scroll-list :cells="cells" :fetchCells="fetchCells" :loading="loading"></infinite-scroll-list>
+    <infinite-scroll-list
+      :cells="cells"
+      :loading="loading"
+      :fetchCells="fetchCells"
+      :handleClick="handleClick"
+    ></infinite-scroll-list>
   </div>
 </template>
 
@@ -37,6 +42,9 @@
             this.loading = false
           }, 800)
         }, filedDate => console.log(filedDate))
+      },
+      handleClick () {
+        console.log('latestMeeting')
       }
     }
   }

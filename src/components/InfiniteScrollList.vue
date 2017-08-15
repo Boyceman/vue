@@ -2,8 +2,13 @@
   <div class="InfiniteScrollList">
     <div class="wrap" ref="wrap">
       <placeholder-cell v-if="!cells.length" v-for="n in 10" :key="n"></placeholder-cell>
-      <latest-meeting-cell v-for="(cell, index) in cells" :key="index" :cell="cell"
-        :clazz="cell.class" ref="cell"></latest-meeting-cell>
+      <latest-meeting-cell v-for="(cell, index) in cells"
+        ref="cell"
+        :key="index"
+        :cell="cell"
+        :clazz="cell.class"
+        :handleClick="handleClick"
+      ></latest-meeting-cell>
       <mt-spinner type="double-bounce"></mt-spinner>
     </div>
   </div>
@@ -17,7 +22,7 @@
 
   export default {
     name: 'InfiniteScrollList',
-    props: ['cells', 'newCells', 'fetchCells', 'loading'],
+    props: ['cells', 'newCells', 'fetchCells', 'loading', 'handleClick'],
     components: { LatestMeetingCell, PlaceholderCell },
     data () {
       return {}

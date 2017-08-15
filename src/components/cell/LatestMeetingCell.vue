@@ -1,5 +1,5 @@
 <template>
-  <div class="LatestMeetingCell" :class="clazz">
+  <div class="LatestMeetingCell" :class="clazz" @click="handleClick">
     <div class="image">
       <img :src="image">
     </div>
@@ -15,7 +15,7 @@
 <script>
   export default {
     name: 'LatestMeetingCell',
-    props: ['cell', 'clazz'],
+    props: ['cell', 'clazz', 'handleClick'],
     data () {
       const { image, title, date, name, organization } = this.$props.cell
       return {
