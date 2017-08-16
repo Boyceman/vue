@@ -9,6 +9,7 @@
 <script>
   import '../mintUI'
   import '@/mocks'
+  import { mapState, mapMutations } from 'vuex'
   import { _router as LatestMeeting } from '@/routes/LatestMeeting'
   import { _router as HistoryMeeting } from '@/routes/HistoryMeeting'
   import { _router as MeetingNews } from '@/routes/MeetingNews'
@@ -23,8 +24,6 @@
     data () {
       return {
         nav: true,
-        tab: this.$store.getters['tabBar-if'],
-        active: '',
         tabBars: [
           {
             clazz: 'latest',
@@ -50,22 +49,23 @@
       }
     },
     mounted () {
-      this.tabBars.forEach(item => {
-        if (this.$route.path === item.path) {
-          this.active = item.clazz
-        }
-      })
       const html = document.getElementsByTagName('html')[0]
       html.addEventListener('touchmove', e => {
         e.stopPropagation()
       }, { passive: true })
+    },
+    computed: {
+      ...mapState({ tab: state => state.tabBar.if })
+    },
+    methods: {
+      ...mapMutations(['tabBarActive'])
     },
     watch: {
       '$route': function (to) {
         this.tabBars.forEach(tabBar => {
           if (tabBar.path === to.path) {
             this.nav = tabBar.clazz !== 'account'
-            this.$store.commit('tabBar-active', { active: tabBar.clazz })
+            this.tabBarActive({ active: tabBar.clazz })
           }
         })
       }

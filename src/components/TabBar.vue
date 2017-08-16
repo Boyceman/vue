@@ -1,5 +1,5 @@
 <template>
-  <mt-tabbar class="TabBar" v-model="active">
+  <mt-tabbar class="TabBar" v-model="tabBar.active">
     <mt-tab-item v-for="(tabBar, index) in tabBars" :key="tabBar.clazz"
       :id="tabBar.clazz" @click.native="navigator(tabBar)">
       <i slot="icon" class="icon" :class="tabBar.clazz"></i>
@@ -9,36 +9,21 @@
 </template>
 
 <script>
+  import { mapState, mapMutations } from 'vuex'
   export default {
     name: 'TabBar',
     props: ['tabBars'],
     data () {
-      return {
-        active: this.$store.getters['tabBar-active']
-      }
+      return {}
     },
-    mounted () {
-      this.$utils.logs.group('tabBar  --Mounted LifeCircle', this.$route.path)
-      this.$props.tabBars.forEach(item => {
-        if (this.$route.path === item.path) {
-          this.active = item.clazz
-          this.$store.commit('tabBar-active', { active: item.clazz })
-        }
-      })
+    computed: {
+      ...mapState(['tabBar'])
     },
     methods: {
+      ...mapMutations(['tabBarActive']),
       navigator: function (tabBar) {
-        this.$store.commit('tabBar-active', { active: tabBar.clazz })
+        this.tabBarActive({ active: tabBar.clazz })
         this.$router.push(tabBar.path)
-      }
-    },
-    watch: {
-      '$route': function (to) {
-        this.$props.tabBars.forEach(tabBar => {
-          if (tabBar.path === to.path) {
-            this.active = tabBar.clazz
-          }
-        })
       }
     }
   }
