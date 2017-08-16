@@ -16,23 +16,35 @@
 
 <script>
   import throttle from '@/utils/throttle'
+  import { setStorage, getStorage } from '@/utils/storage'
   import { loadMore, hiddenOutViewport } from '@/utils/list'
   import PlaceholderCell from '@/components/cell/PlaceholderCell'
   import LatestMeetingCell from '@/components/cell/LatestMeetingCell'
+  import { mapState } from 'vuex'
 
   export default {
     name: 'InfiniteScrollList',
-    props: ['cells', 'newCells', 'fetchCells', 'loading', 'handleClick'],
+    props: ['cells', 'newCells', 'fetchCells', 'handleClick'],
     components: { LatestMeetingCell, PlaceholderCell },
     data () {
-      return {}
+      return {
+        storageScrollTop: getStorage(`${this.$route.path}-scrollTop`)
+      }
     },
-    mounted () {
+    computed: {
+      ...mapState({ loading: state => state.list.loading })
+    },
+    updated () {
+      if (this.storageScrollTop && !this.loading && this.$props.cells.length) {
+        this.$parent.$el.scrollTop = this.storageScrollTop
+      }
       this.$parent.$el.addEventListener('scroll', this.handleScroll, false)
     },
     methods: {
       handleScroll: throttle(function () {
-        loadMore.bind(this)()
+        const scrollTop = loadMore.bind(this)()
+        setStorage(`${this.$route.path}-scrollTop`, scrollTop)
+        this.storageScrollTop = scrollTop
         hiddenOutViewport.bind(this)()
       })
     }

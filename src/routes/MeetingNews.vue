@@ -11,9 +11,11 @@
 </template>
 
 <script>
-  import InfiniteScrollList from '@/components/InfiniteScrollList'
+  import { mapMutations } from 'vuex'
+  import { fetchCells } from './methods'
+  import { getStorage } from '@/utils/storage'
   import SelectBar from '@/components/SelectBar'
-  import apiGenerator from '@/api'
+  import InfiniteScrollList from '@/components/InfiniteScrollList'
   export default {
     name: 'MeetingNews',
     _router: {
@@ -26,7 +28,6 @@
       InfiniteScrollList
     },
     data () {
-      this.fetchCells()
       return {
         options: [
           {
@@ -46,18 +47,14 @@
         cells: []
       }
     },
+    mounted () {
+      getStorage(`${this.$route.path}-list`)
+        ? this.cells = getStorage(`${this.$route.path}-list`)
+        : this.fetchCells()
+    },
     methods: {
-      fetchCells () {
-        this.loading = true
-        apiGenerator({ url: '/list' }).then(response => {
-          const { list } = response.body
-          // TODO timer need to be removed when api was added
-          setTimeout(() => {
-            this.cells = this.cells.concat(list)
-            this.loading = false
-          }, 800)
-        }, filedDate => console.log(filedDate))
-      },
+      ...mapMutations(['listLoading']),
+      fetchCells: fetchCells('/list'),
       handleClick () {
         console.log('meetingNews')
       }

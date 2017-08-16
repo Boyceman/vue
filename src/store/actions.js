@@ -1,5 +1,5 @@
 /**
- * async mutation
+ * async commit mutation
  */
 import * as logs from '@/utils/logs'
 

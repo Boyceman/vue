@@ -13,7 +13,7 @@ export default (fn, delay = 200) => {
       clearTimeout(timer)
       timer = null
     }
-    now = new Date()
+    now = +new Date()
     if (lastExec) {
       if (now - lastExec > delay) {
         handle()
