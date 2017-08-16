@@ -2,6 +2,10 @@
   @return $px / 75 * 1rem;
 }
 
+@function diff($num1, $num2) {
+  @return $num1 - $num2
+}
+
 @mixin Ellipsis($width: 100%) {
   width: $width;
   text-overflow: ellipsis;

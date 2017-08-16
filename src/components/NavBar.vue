@@ -25,10 +25,11 @@
   @import '../style/functions';
 
   .NavBar {
-    height: p2r(80);
+    box-sizing: border-box;
+    height: 45px;
     background: #dd2738;
     position: relative;
-    padding: p2r(5) 0;
+    padding: 3px 0;
     .back {
       float: left;
       margin-left: p2r(18);

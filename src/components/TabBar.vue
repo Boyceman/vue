@@ -34,7 +34,7 @@
 
   .TabBar {
     overflow: hidden;
-    height: p2r(100);
+    height: 50px;
     .mint-tab-item {
       padding: 5px 0;
       background: #333333 !important;

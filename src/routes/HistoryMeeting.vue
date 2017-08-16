@@ -67,14 +67,13 @@
 
   .HistoryMeeting {
     -webkit-overflow-scrolling: touch;
-    padding-bottom: p2r(100);
     z-index: 1;
     height: calc(100% - 95px);
     overflow: scroll;
     width: 100%;
     position: static;
     .InfiniteScrollList {
-      padding-top: p2r(76);
+      margin-top: p2r(76);
     }
   }
 </style>
