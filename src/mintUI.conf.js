@@ -5,6 +5,7 @@ module.exports = [
   'Search',
   'TabItem',
   'Spinner',
+  'Loadmore',
   'TabContainer',
   'TabContainerItem'
 ]

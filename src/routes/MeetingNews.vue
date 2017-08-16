@@ -4,7 +4,9 @@
     <infinite-scroll-list
       :cells="cells"
       :loading="loading"
+      ref="infiniteList"
       :fetchCells="fetchCells"
+      :refreshCells="refreshCells"
       :handleClick="handleClick"
     ></infinite-scroll-list>
   </div>
@@ -12,7 +14,7 @@
 
 <script>
   import { mapMutations } from 'vuex'
-  import { fetchCells } from './methods'
+  import { fetchCells, refreshCells } from './methods'
   import { getStorage } from '@/utils/storage'
   import SelectBar from '@/components/SelectBar'
   import InfiniteScrollList from '@/components/InfiniteScrollList'
@@ -55,6 +57,7 @@
     methods: {
       ...mapMutations(['listLoading']),
       fetchCells: fetchCells('/list'),
+      refreshCells: refreshCells('/list'),
       handleClick () {
         console.log('meetingNews')
       }

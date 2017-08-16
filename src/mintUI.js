@@ -7,6 +7,7 @@ import {
   Search,
   TabItem,
   Spinner,
+  Loadmore,
   TabContainer,
   TabContainerItem
 } from 'mint-ui'
@@ -17,5 +18,6 @@ Vue.component(Tabbar.name, Tabbar)
 Vue.component(Search.name, Search)
 Vue.component(TabItem.name, TabItem)
 Vue.component(Spinner.name, Spinner)
+Vue.component(Loadmore.name, Loadmore)
 Vue.component(TabContainer.name, TabContainer)
 Vue.component(TabContainerItem.name, TabContainerItem)
