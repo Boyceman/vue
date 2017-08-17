@@ -9,6 +9,8 @@
           :cell="cell"
           :clazz="cell.class"
           :handleClick="handleClick"
+          :haveVideo="cell.haveVideo"
+          :recommend="cell.recommend"
         ></latest-meeting-cell>
         <mt-spinner type="double-bounce"></mt-spinner>
       </div>

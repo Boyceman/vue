@@ -10,7 +10,9 @@ export const listData = Mock.mock(`${baseUrl}/list`, {
     'title': '@ctitle(10,20)',
     'organization': '@csentence(4)',
     'image': '@image(\'122x112\', \'#d52535\')',
-    'date': '@date("yyyy-MM-dd HH:mm-HH:mm")'
+    'date': '@date("yyyy-MM-dd HH:mm-HH:mm")',
+    'haveVideo': '@boolean',
+    'recommend': '@boolean'
   }]
 })
 

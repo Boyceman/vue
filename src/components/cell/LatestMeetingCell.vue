@@ -1,5 +1,5 @@
 <template>
-  <div class="LatestMeetingCell" :class="clazz" @click="handleClick">
+  <div class="LatestMeetingCell" :class="clazz" :recommend="cell.recommend" @click="handleClick">
     <div class="image">
       <img :src="cell.image">
     </div>
@@ -9,15 +9,22 @@
       <span class="organization">{{ cell.organization }}</span>
       <p class="date">{{ cell.date }}</p>
     </div>
+    <i v-if="haveVideo" class="icon-video" @click="entryVideo"></i>
   </div>
 </template>
 
 <script>
   export default {
     name: 'LatestMeetingCell',
-    props: ['cell', 'clazz', 'handleClick'],
+    props: ['cell', 'clazz', 'handleClick', 'haveVideo'],
     data () {
       return {}
+    },
+    methods: {
+      entryVideo (e) {
+        e.stopPropagation()
+        console.log('entry video page')
+      }
     }
   }
 </script>
@@ -34,6 +41,11 @@
     border-left: none;
     border-right: none;
     height: p2r(208);
+    position: relative;
+    &[recommend=true] {
+      background: #fff url(../../assets/recommend.svg) no-repeat left top;
+      background-size: p2r(60);
+    }
     &:not(:first-child) {
       margin-top: p2r(10);
     }
@@ -74,6 +86,15 @@
         color: #999999;
         line-height: 1.3;
       }
+    }
+    .icon-video {
+      position: absolute;
+      right: p2r(26);
+      top: 50%;
+      margin-top: p2r(-9);
+      width: p2r(30);
+      height: p2r(18);
+      background: url(../../assets/latestMeeting-icon-video.svg) no-repeat center;
     }
   }
 </style>
