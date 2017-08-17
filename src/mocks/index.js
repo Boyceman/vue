@@ -6,8 +6,8 @@ export const listData = Mock.mock(`${baseUrl}/list`, {
   errorCode: 0,
   errorMsg: 'null',
   'list|10': [{
-    'name': '@cname',
-    'title': '@ctitle',
+    'name': '@cname （@ctitle(5)）',
+    'title': '@ctitle(10,20)',
     'organization': '@csentence(4)',
     'image': '@image(\'122x112\', \'#d52535\')',
     'date': '@date("yyyy-MM-dd HH:mm-HH:mm")'
