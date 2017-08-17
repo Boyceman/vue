@@ -23,7 +23,7 @@
     },
     data () {
       return {
-        nav: true,
+        nav: '',
         tabBars: [
           {
             clazz: 'latest',
@@ -63,8 +63,8 @@
     watch: {
       '$route': function (to) {
         this.tabBars.forEach(tabBar => {
-          if (tabBar.path === to.path) {
-            this.nav = tabBar.clazz !== 'account'
+          if (to.path.indexOf(tabBar.path) >= 0) {
+            this.nav = tabBar.clazz === 'latest' || tabBar.clazz === 'history' || tabBar.clazz === 'news'
             this.tabBarActive({ active: tabBar.clazz })
           }
         })

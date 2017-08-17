@@ -31,8 +31,8 @@
   export default {
     name: 'MeetingNews',
     _router: {
-      name,
       path: '/news',
+      name: 'MeetingNews',
       component: resolve => require.ensure([], () => resolve(require('./MeetingNews')), 'MeetingNews')
     },
     components: {

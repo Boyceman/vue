@@ -34,7 +34,7 @@
   export default {
     name: 'HistoryMeeting',
     _router: {
-      name,
+      name: 'HistoryMeeting',
       path: '/history',
       component: resolve => require.ensure([], () => resolve(require('./HistoryMeeting')), 'HistoryMeeting')
     },

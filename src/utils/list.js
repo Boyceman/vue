@@ -7,7 +7,7 @@ export function loadMore () {
   if (!wrap) return false
   const wrapPaddingTop = Math.ceil(parseFloat(window.getComputedStyle(wrap).paddingTop))
   const wrapHeight = parseInt(window.getComputedStyle(wrap).height) + wrapPaddingTop * 2
-  const view = this.$parent.$el
+  const view = this.$el.parentNode
   const viewHeight = parseInt(window.getComputedStyle(view).height)
   const viewScrollTop = view.scrollTop
   const diff = wrapHeight - viewHeight - viewScrollTop

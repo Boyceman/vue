@@ -1,5 +1,5 @@
 <template>
-  <div class="LatestMeeting" ref="view">
+  <div class="LatestMeeting">
     <div class="banner"></div>
     <infinite-scroll-list
       :cells="cells"
@@ -32,7 +32,7 @@
   export default {
     name: 'LatestMeeting',
     _router: {
-      name,
+      name: 'LatestMeeting',
       path: '/',
       component: resolve => require.ensure([], () => resolve(require('./LatestMeeting')), 'LatestMeeting')
     },

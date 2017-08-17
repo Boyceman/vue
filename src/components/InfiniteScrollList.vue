@@ -35,7 +35,7 @@
       if (this.storageScrollTop && !this.loading && this.$props.cells.length) {
         this.$parent.$el.scrollTop = this.storageScrollTop
       }
-      this.$parent.$el.addEventListener('scroll', this.handleScroll, false)
+      this.$el.parentNode.addEventListener('scroll', this.handleScroll, false)
     },
     methods: {
       ...mapMutations(['listLoading']),

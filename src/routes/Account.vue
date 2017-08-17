@@ -1,6 +1,6 @@
 <template>
   <div class="Account">
-    <title-h1 :title="title"></title-h1>
+    <h2 class="title">{{ title }}</h2>
     <div class="info">
       <img class="avatar" :src="info.avatar">
       <h2 class="name">{{ info.name }}</h2>
@@ -20,13 +20,12 @@
   export default {
     name: 'Account',
     _router: {
-      name,
+      name: 'Account',
       path: '/account',
+//      children: ['Meeting'], TODO add this if you want to use Nested route and add <router-view />
       component: resolve => require.ensure([], () => resolve(require('./Account')), 'Account')
     },
-    components: {
-      'TitleH1': () => import('@/components/Title')
-    },
+    components: {},
     data () {
       return {
         title: '个人中心',
@@ -74,6 +73,13 @@
   .Account {
     * {
       box-sizing: border-box;
+    }
+    .title {
+      font-size: p2r(30);
+      line-height: p2r(90);
+      color: #ffffff;
+      background: #dd2738;
+      height: 45px;
     }
     .info {
       overflow: hidden;
