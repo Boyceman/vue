@@ -2,13 +2,21 @@
   @return $px / 75 * 1rem;
 }
 
-@mixin IconBackground($name) {
+@mixin HistoryMeetingListIcon($name) {
   &.#{$name} {
     &:after {
       background: url('../../assets/#{$name}.svg') no-repeat center / cover;
     }
     &.grey:after {
       background: url('../../assets/#{$name}1.svg') no-repeat center / cover;
+    }
+  }
+}
+
+@mixin AccountListIcon($name) {
+  &.#{$name} {
+    &:before {
+      background: url('../assets/#{$name}.png') no-repeat center / 100%;
     }
   }
 }

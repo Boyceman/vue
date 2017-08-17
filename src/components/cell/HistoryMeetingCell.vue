@@ -120,10 +120,10 @@
             right: 0;
             margin: auto;
           }
-          @include IconBackground(download);
-          @include IconBackground(video);
-          @include IconBackground(audio);
-          @include IconBackground(note);
+          @include HistoryMeetingListIcon(download);
+          @include HistoryMeetingListIcon(video);
+          @include HistoryMeetingListIcon(audio);
+          @include HistoryMeetingListIcon(note);
         }
       }
     }

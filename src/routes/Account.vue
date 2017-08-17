@@ -7,10 +7,9 @@
       <p class="organization">{{ info.organization }}</p>
     </div>
     <ul class="menu">
-      <li>我的消息</li>
-      <li>我的会议</li>
-      <li>我的收藏</li>
-      <li>下载管理</li>
+      <li :class="menu.clazz" v-for="(menu, index) in menus" @click="handleClick(menu.link)">{{ menu.text }}
+        <span v-if="index === 0" class="unread">18</span>
+      </li>
     </ul>
   </div>
 </template>
@@ -31,22 +30,26 @@
     data () {
       return {
         title: '个人中心',
-        menu: [
+        menus: [
           {
-            name: '我的消息',
-            link: '/message'
+            clazz: 'message',
+            text: '我的消息',
+            link: '/account/message'
           },
           {
-            name: '我的会议',
-            link: '/meeting'
+            clazz: 'meeting',
+            text: '我的会议',
+            link: '/account/meeting'
           },
           {
-            name: '我的收藏',
-            link: '/collection'
+            clazz: 'star',
+            text: '我的收藏',
+            link: '/account/collection'
           },
           {
-            name: '下载管理',
-            link: '/download'
+            clazz: 'download',
+            text: '下载管理',
+            link: '/account/download'
           }
         ],
         info: {}
@@ -56,6 +59,11 @@
       apiGenerator({ url: '/info' }).then(response => {
         this.info = response.body.object
       }, filedDate => console.log(filedDate))
+    },
+    methods: {
+      handleClick (link) {
+        this.$router.push(link)
+      }
     }
   }
 </script>
@@ -116,6 +124,35 @@
           top: 50%;
           margin-top: p2r(-12.5);
           background: url(../assets/arrow.png) center no-repeat /cover;
+        }
+        &:before {
+          content: '';
+          position: absolute;
+          width: p2r(42);
+          height: p2r(40);
+          top: 50%;
+          margin-top: p2r(-20);
+          left: p2r(35);
+        }
+        @include AccountListIcon(message);
+        @include AccountListIcon(meeting);
+        @include AccountListIcon(download);
+        @include AccountListIcon(star);
+        &.message {
+          .unread {
+            position: absolute;
+            right: p2r(60);
+            top: p2r(14);
+            width: p2r(40);
+            height: p2r(40);
+            background: #dd2738;
+            color: #ffffff;
+            font-size: 14px;
+            text-align: center;
+            line-height: p2r(42);
+            letter-spacing: .1px;
+            border-radius: 100%;
+          }
         }
       }
     }
