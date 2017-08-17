@@ -3,7 +3,6 @@
     <select-bar :options="options"></select-bar>
     <infinite-scroll-list
       :cells="cells"
-      :loading="loading"
       ref="infiniteList"
       :fetchCells="fetchCells"
       :refreshCells="refreshCells"

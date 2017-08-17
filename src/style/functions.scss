@@ -2,8 +2,15 @@
   @return $px / 75 * 1rem;
 }
 
-@function diff($num1, $num2) {
-  @return $num1 - $num2
+@mixin IconBackground($name) {
+  &.#{$name} {
+    &:after {
+      background: url('../../assets/#{$name}.svg') no-repeat center / cover;
+    }
+    &.grey:after {
+      background: url('../../assets/#{$name}1.svg') no-repeat center / cover;
+    }
+  }
 }
 
 @mixin Ellipsis($width: 100%) {

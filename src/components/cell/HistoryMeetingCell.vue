@@ -1,5 +1,5 @@
 <template>
-  <div class="HistoryMeetingCell" :class="clazz" :recommend="cell.recommend" @click="handleClick">
+  <div class="HistoryMeetingCell" :class="clazz" @click="handleClick">
     <div class="image">
       <img :src="cell.image">
     </div>
@@ -8,22 +8,39 @@
       <span class="name">{{ cell.name }}</span>
       <span class="organization">{{ cell.organization }}</span>
       <p class="date">{{ cell.date }}</p>
+      <div class="icon">
+        <i v-if="haveDownload" :class="['download', { grey: haveDownload === 1 }]" @click="entryDownload"></i>
+        <i v-if="haveVideo" :class="['video', { grey: haveVideo === 1 }]" @click="entryVideo"></i>
+        <i v-if="haveAudio" :class="['audio', { grey: haveAudio === 1 }]" @click="entryAudio"></i>
+        <i v-if="haveNote" :class="['note', { grey: haveNote === 1 }]" @click="entryNote"></i>
+      </div>
     </div>
-    <i v-if="haveVideo" class="icon-video" @click="entryVideo"></i>
   </div>
 </template>
 
 <script>
   export default {
     name: 'HistoryMeetingCell',
-    props: ['cell', 'clazz', 'handleClick', 'haveVideo'],
+    props: ['cell', 'clazz', 'handleClick', 'haveVideo', 'haveDownload', 'haveAudio', 'haveNote'],
     data () {
       return {}
     },
     methods: {
+      entryNote (e) {
+        e.stopPropagation()
+        console.log('entry note page')
+      },
+      entryAudio (e) {
+        e.stopPropagation()
+        console.log('entry audio page')
+      },
       entryVideo (e) {
         e.stopPropagation()
         console.log('entry video page')
+      },
+      entryDownload (e) {
+        e.stopPropagation()
+        console.log('entry download page')
       }
     }
   }
@@ -35,17 +52,12 @@
   .HistoryMeetingCell {
     box-sizing: border-box;
     overflow: hidden;
-    padding: p2r(30) p2r(48) p2r(40) p2r(35);
+    padding: p2r(30) p2r(48) p2r(20) p2r(35);
     background: #fff;
     border: 1px solid #eee;
     border-left: none;
     border-right: none;
-    height: p2r(208);
     position: relative;
-    &[recommend=true] {
-      background: #fff url(../../assets/recommend.svg) no-repeat left top;
-      background-size: p2r(60);
-    }
     &:not(:first-child) {
       margin-top: p2r(10);
     }
@@ -86,15 +98,34 @@
         color: #999999;
         line-height: 1.3;
       }
-    }
-    .icon-video {
-      position: absolute;
-      right: p2r(26);
-      top: 50%;
-      margin-top: p2r(-9);
-      width: p2r(30);
-      height: p2r(18);
-      background: url(../../assets/latestMeeting-icon-video.svg) no-repeat center;
+      .icon {
+        overflow: hidden;
+        margin: p2r(10) 0;
+        i {
+          float: right;
+          position: relative;
+          height: p2r(40);
+          width: p2r(131);
+          &:not(:first-child) {
+            border-right: 1px solid #e9e9e9;
+          }
+          &:after {
+            content: '';
+            position: absolute;
+            width: p2r(40);
+            height: p2r(40);
+            left: 0;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            margin: auto;
+          }
+          @include IconBackground(download);
+          @include IconBackground(video);
+          @include IconBackground(audio);
+          @include IconBackground(note);
+        }
+      }
     }
   }
 </style>

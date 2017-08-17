@@ -3,7 +3,9 @@
     <select-bar :options="options"></select-bar>
     <infinite-scroll-list
       :cells="cells"
+      ref="infiniteList"
       :fetchCells="fetchCells"
+      :refreshCells="refreshCells"
       :handleClick="handleClick"
     >
       <history-meeting-cell v-for="(cell, index) in cells"
@@ -12,8 +14,10 @@
         :cell="cell"
         :clazz="cell.class"
         :handleClick="handleClick"
+        :haveNote="cell.haveNote"
         :haveVideo="cell.haveVideo"
-        :recommend="cell.recommend"
+        :haveAudio="cell.haveAudio"
+        :haveDownload="cell.haveDownload"
       ></history-meeting-cell>
     </infinite-scroll-list>
   </div>
@@ -21,7 +25,7 @@
 
 <script>
   import { mapMutations } from 'vuex'
-  import { fetchCells } from './methods'
+  import { fetchCells, refreshCells } from './methods'
   import { getStorage } from '@/utils/storage'
   import SelectBar from '@/components/SelectBar'
   import InfiniteScrollList from '@/components/InfiniteScrollList'
@@ -67,6 +71,7 @@
     methods: {
       ...mapMutations(['listLoading']),
       fetchCells: fetchCells('/list'),
+      refreshCells: refreshCells('/list'),
       handleClick () {
         console.log('historyMeeting')
       }

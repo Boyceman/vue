@@ -11,8 +11,11 @@ export const listData = Mock.mock(`${baseUrl}/list`, {
     'organization': '@csentence(4)',
     'image': '@image(\'122x112\', \'#d52535\')',
     'date': '@date("yyyy-MM-dd HH:mm-HH:mm")',
-    'haveVideo': '@boolean',
-    'recommend': '@boolean'
+    'recommend': '@boolean',
+    'haveNote': '@integer(0, 2)',
+    'haveAudio': '@integer(0, 2)',
+    'haveVideo': '@integer(0, 2)',
+    'haveDownload': '@integer(0, 2)'
   }]
 })
 

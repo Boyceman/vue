@@ -3,7 +3,9 @@
     <div class="banner"></div>
     <infinite-scroll-list
       :cells="cells"
+      ref="infiniteList"
       :fetchCells="fetchCells"
+      :refreshCells="refreshCells"
       :handleClick="handleClick"
     >
       <latest-meeting-cell v-for="(cell, index) in cells"
@@ -22,7 +24,7 @@
 <script>
   import apiGenerator from '@/api'
   import { mapMutations } from 'vuex'
-  import { fetchCells } from './methods'
+  import { fetchCells, refreshCells } from './methods'
   import { getStorage } from '@/utils/storage'
   import InfiniteScrollList from '@/components/InfiniteScrollList'
   import LatestMeetingCell from '@/components/cell/LatestMeetingCell'
@@ -51,6 +53,7 @@
     methods: {
       ...mapMutations(['listLoading']),
       fetchCells: fetchCells('/list'),
+      refreshCells: refreshCells('/list'),
       handleClick () {
         console.log('latestMeeting')
       }
