@@ -5,7 +5,17 @@
       :cells="cells"
       :fetchCells="fetchCells"
       :handleClick="handleClick"
-    ></infinite-scroll-list>
+    >
+      <latest-meeting-cell v-for="(cell, index) in cells"
+        ref="cell"
+        :key="index"
+        :cell="cell"
+        :clazz="cell.class"
+        :handleClick="handleClick"
+        :haveVideo="cell.haveVideo"
+        :recommend="cell.recommend"
+      ></latest-meeting-cell>
+    </infinite-scroll-list>
   </div>
 </template>
 
@@ -15,6 +25,7 @@
   import { fetchCells } from './methods'
   import { getStorage } from '@/utils/storage'
   import InfiniteScrollList from '@/components/InfiniteScrollList'
+  import LatestMeetingCell from '@/components/cell/LatestMeetingCell'
 
   export default {
     name: 'LatestMeeting',
@@ -24,7 +35,8 @@
       component: resolve => require.ensure([], () => resolve(require('./LatestMeeting')), 'LatestMeeting')
     },
     components: {
-      InfiniteScrollList
+      InfiniteScrollList,
+      LatestMeetingCell
     },
     data () {
       return {

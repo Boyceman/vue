@@ -3,15 +3,7 @@
     <mt-loadmore :top-method="loadTop" ref="loadmore">
       <div class="wrap" ref="wrap">
         <placeholder-cell v-if="!cells.length" v-for="n in 10" :key="n"></placeholder-cell>
-        <latest-meeting-cell v-for="(cell, index) in cells"
-          ref="cell"
-          :key="index"
-          :cell="cell"
-          :clazz="cell.class"
-          :handleClick="handleClick"
-          :haveVideo="cell.haveVideo"
-          :recommend="cell.recommend"
-        ></latest-meeting-cell>
+        <slot></slot>
         <mt-spinner type="double-bounce"></mt-spinner>
       </div>
     </mt-loadmore>
@@ -23,13 +15,14 @@
   import { setStorage, getStorage, removeStorage } from '@/utils/storage'
   import { loadMore, hiddenOutViewport } from '@/utils/list'
   import PlaceholderCell from '@/components/cell/PlaceholderCell'
-  import LatestMeetingCell from '@/components/cell/LatestMeetingCell'
   import { mapState, mapMutations } from 'vuex'
 
   export default {
     name: 'InfiniteScrollList',
     props: ['cells', 'newCells', 'fetchCells', 'refreshCells', 'handleClick'],
-    components: { LatestMeetingCell, PlaceholderCell },
+    components: {
+      PlaceholderCell
+    },
     data () {
       return {
         storageScrollTop: getStorage(`${this.$route.path}-scrollTop`)
