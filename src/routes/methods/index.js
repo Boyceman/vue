@@ -24,10 +24,8 @@ export const refreshCells = (url) => {
       // TODO timer need to be removed when api was added
       setTimeout(() => {
         this.cells = list
-        this.listLoading({ loading: false })
         setStorage(`${this.$route.path}-list`, this.cells)
-        // TODO cells changed but web not rerender
-        console.log(this, 88888)
+        this.listLoading({ loading: false })
         this.$refs.infiniteList.$refs.loadmore.onTopLoaded()
       }, 800)
     }, filedDate => console.error(filedDate))

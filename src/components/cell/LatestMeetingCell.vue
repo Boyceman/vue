@@ -1,13 +1,13 @@
 <template>
   <div class="LatestMeetingCell" :class="clazz" @click="handleClick">
     <div class="image">
-      <img :src="image">
+      <img :src="cell.image">
     </div>
     <div class="text">
-      <h2 class="title">{{ title }}</h2>
-      <p class="date">{{ date }}</p>
-      <span class="name">{{ name }}</span>
-      <span class="organization">{{ organization }}</span>
+      <h2 class="title">{{ cell.title }}</h2>
+      <p class="date">{{ cell.date }}</p>
+      <span class="name">{{ cell.name }}</span>
+      <span class="organization">{{ cell.organization }}</span>
     </div>
   </div>
 </template>
@@ -17,10 +17,7 @@
     name: 'LatestMeetingCell',
     props: ['cell', 'clazz', 'handleClick'],
     data () {
-      const { image, title, date, name, organization } = this.$props.cell
-      return {
-        image, title, date, name, organization
-      }
+      return {}
     }
   }
 </script>
