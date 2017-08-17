@@ -8,7 +8,17 @@
       :fetchCells="fetchCells"
       :refreshCells="refreshCells"
       :handleClick="handleClick"
-    ></infinite-scroll-list>
+    >
+      <meeting-news-cell v-for="(cell, index) in cells"
+        ref="cell"
+        :key="index"
+        :cell="cell"
+        :clazz="cell.class"
+        :handleClick="handleClick"
+        :haveVideo="cell.haveVideo"
+        :recommend="cell.recommend"
+      ></meeting-news-cell>
+    </infinite-scroll-list>
   </div>
 </template>
 
@@ -18,6 +28,7 @@
   import { getStorage } from '@/utils/storage'
   import SelectBar from '@/components/SelectBar'
   import InfiniteScrollList from '@/components/InfiniteScrollList'
+  import MeetingNewsCell from '@/components/cell/MeetingNewsCell'
   export default {
     name: 'MeetingNews',
     _router: {
@@ -27,7 +38,8 @@
     },
     components: {
       SelectBar,
-      InfiniteScrollList
+      InfiniteScrollList,
+      MeetingNewsCell
     },
     data () {
       return {

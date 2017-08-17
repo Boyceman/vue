@@ -5,7 +5,17 @@
       :cells="cells"
       :fetchCells="fetchCells"
       :handleClick="handleClick"
-    ></infinite-scroll-list>
+    >
+      <history-meeting-cell v-for="(cell, index) in cells"
+        ref="cell"
+        :key="index"
+        :cell="cell"
+        :clazz="cell.class"
+        :handleClick="handleClick"
+        :haveVideo="cell.haveVideo"
+        :recommend="cell.recommend"
+      ></history-meeting-cell>
+    </infinite-scroll-list>
   </div>
 </template>
 
@@ -15,6 +25,7 @@
   import { getStorage } from '@/utils/storage'
   import SelectBar from '@/components/SelectBar'
   import InfiniteScrollList from '@/components/InfiniteScrollList'
+  import HistoryMeetingCell from '@/components/cell/HistoryMeetingCell'
 
   export default {
     name: 'HistoryMeeting',
@@ -25,7 +36,8 @@
     },
     components: {
       SelectBar,
-      InfiniteScrollList
+      InfiniteScrollList,
+      HistoryMeetingCell
     },
     data () {
       return {
