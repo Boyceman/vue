@@ -1,6 +1,6 @@
 <template>
   <div class="AccountMessage">
-    <title-h1 :title="title"></title-h1>
+    <title-h1 :title="title" :hidden="true"></title-h1>
     <div class="scroll">
       <infinite-scroll-list
         :cells="cells"
@@ -48,12 +48,13 @@
       }
     },
     mounted () {
+      this.tabBarIf({ if: false })
       getStorage(`${this.$route.path}-list`)
         ? this.cells = getStorage(`${this.$route.path}-list`)
         : this.fetchCells()
     },
     methods: {
-      ...mapMutations(['listLoading']),
+      ...mapMutations(['listLoading', 'tabBarIf']),
       fetchCells: fetchCells('/message'),
       refreshCells: refreshCells('/message'),
       handleClick () {
@@ -68,19 +69,13 @@
 
   .AccountMessage {
     overflow: hidden;
-    height: calc(100% - 50px);
+    height: 100%;
     .scroll {
       width: 100%;
       height: calc(100% - 45px);
       overflow: scroll;
       -webkit-overflow-scrolling: touch;
       z-index: 1;
-    }
-    .Title {
-      .text {
-        display: inline-block;
-        margin-left: p2r(-70);
-      }
     }
   }
 </style>

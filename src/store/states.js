@@ -1,10 +1,10 @@
 export default {
   navBar: {
-    if: true
+    if: false
   },
   tabBar: {
     active: 'latest',
-    if: true
+    if: false
   },
   list: {
     loading: false

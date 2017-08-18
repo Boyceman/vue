@@ -62,9 +62,10 @@
     },
     mounted () {
       this.navBarIf({ if: false })
+      this.tabBarIf({ if: true })
     },
     methods: {
-      ...mapMutations(['navBarIf']),
+      ...mapMutations(['navBarIf', 'tabBarIf']),
       handleClick (link) {
         this.$router.push(link)
       }

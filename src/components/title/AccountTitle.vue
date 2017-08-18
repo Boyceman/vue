@@ -3,16 +3,17 @@
     <span class="back" @click="()=>{this.$router.go(-1)}">
       <i class="iconfont icon-back"></i>
     </span>
-    <span class="text">{{ title }}</span>
-    <span v-if="this.$route.path !== '/account/message'" class="add"><i class="iconfont icon-add"></i></span>
+    <span class="text" :class="hidden ? 'moveLeft': ''">{{ title }}</span>
+    <span v-if="!hidden" class="add"><i class="iconfont icon-add"></i></span>
   </h1>
 </template>
 
 <script>
   export default {
     name: 'Title',
-    props: ['title'],
+    props: ['title', 'hidden'],
     data () {
+      console.log(this.$props.hidden)
       return {}
     }
   }
@@ -40,6 +41,12 @@
       float: right;
       margin-right: p2r(18);
       height: 45px;
+    }
+    .text {
+      &.moveLeft {
+        display: inline-block;
+        margin-left: p2r(-70);
+      }
     }
   }
 </style>

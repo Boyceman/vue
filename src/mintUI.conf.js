@@ -7,5 +7,6 @@ module.exports = [
   'Spinner',
   'Loadmore',
   'TabContainer',
+  'DatetimePicker',
   'TabContainerItem'
 ]
