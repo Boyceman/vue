@@ -16,6 +16,7 @@
 
 <script>
   import apiGenerator from '@/api'
+  import { mapMutations } from 'vuex'
 
   export default {
     name: 'Account',
@@ -59,7 +60,11 @@
         this.info = response.body.object
       }, filedDate => console.log(filedDate))
     },
+    mounted () {
+      this.navBarIf({ if: false })
+    },
     methods: {
+      ...mapMutations(['navBarIf']),
       handleClick (link) {
         this.$router.push(link)
       }

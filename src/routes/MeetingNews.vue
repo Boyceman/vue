@@ -60,12 +60,14 @@
       }
     },
     mounted () {
+      this.tabBarIf({ if: true })
+      this.navBarIf({ if: true })
       getStorage(`${this.$route.path}-list`)
         ? this.cells = getStorage(`${this.$route.path}-list`)
         : this.fetchCells()
     },
     methods: {
-      ...mapMutations(['listLoading']),
+      ...mapMutations(['listLoading', 'tabBarIf', 'navBarIf']),
       fetchCells: fetchCells('/list'),
       refreshCells: refreshCells('/list'),
       handleClick () {

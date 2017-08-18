@@ -1,21 +1,30 @@
 <template>
   <header class="NavBar">
-    <span v-if="this.$route.path === '/'" class="back" @click="()=>{this.$router.go(-1)}"><i class="iconfont icon-back"></i></span>
+    <span v-if="this.$route.path === '/'" class="back" @click="()=>{this.$router.go(-1)}"><i
+      class="iconfont icon-back"></i></span>
     <div class="search">
       <i class="iconfont icon-search"></i>
       <input type="text" class="input" v-model="value">
     </div>
-    <span class="add"><i class="iconfont icon-add"></i></span>
+    <span class="add" @click="launchMeeting"><i class="iconfont icon-add"></i></span>
   </header>
 </template>
 
 <script>
+  import { mapState, mapMutations } from 'vuex'
   export default {
     name: 'NavBar',
     components: {},
     data () {
       return {
         value: ''
+      }
+    },
+    methods: {
+      ...mapMutations(['tabBarIf']),
+      launchMeeting () {
+        this.tabBarIf({ if: false })
+        this.$router.push('/launch')
       }
     }
   }

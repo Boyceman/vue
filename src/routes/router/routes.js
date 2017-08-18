@@ -5,6 +5,7 @@ import { _router as AccountMeeting } from '../AccountMeeting'
 import { _router as AccountMessage } from '../AccountMessage'
 import { _router as HistoryMeeting } from '../HistoryMeeting'
 import { _router as LatestMeeting } from '../LatestMeeting'
+import { _router as LaunchMeeting } from '../LaunchMeeting'
 import { _router as MeetingNews } from '../MeetingNews'
 import { _router as PageNotFound } from '../PageNotFound'
 
@@ -15,6 +16,7 @@ export const routes = [
   AccountMessage,
   HistoryMeeting,
   LatestMeeting,
+  LaunchMeeting,
   MeetingNews,
   PageNotFound
 ]

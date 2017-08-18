@@ -1,6 +1,10 @@
 import * as logs from '@/utils/logs'
 
 export default {
+  'navBarIf': function (state, payload) {
+    state.navBar.if = payload.if
+    logs.group('navBarIf  --Vuex Mutation', payload)
+  },
   'tabBarActive': function (state, payload) {
     state.tabBar.active = payload.active
     logs.group('tabBarActive  --Vuex Mutation', payload)

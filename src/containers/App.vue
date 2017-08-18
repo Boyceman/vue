@@ -23,7 +23,6 @@
     },
     data () {
       return {
-        nav: '',
         tabBars: [
           {
             clazz: 'latest',
@@ -55,7 +54,10 @@
       }, { passive: true })
     },
     computed: {
-      ...mapState({ tab: state => state.tabBar.if })
+      ...mapState({
+        tab: state => state.tabBar.if,
+        nav: state => state.navBar.if
+      })
     },
     methods: {
       ...mapMutations(['tabBarActive'])
@@ -64,7 +66,6 @@
       '$route': function (to) {
         this.tabBars.forEach(tabBar => {
           if (to.path.indexOf(tabBar.path) >= 0) {
-            this.nav = tabBar.clazz === 'latest' || tabBar.clazz === 'history' || tabBar.clazz === 'news'
             this.tabBarActive({ active: tabBar.clazz })
           }
         })

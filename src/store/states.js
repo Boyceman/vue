@@ -1,4 +1,7 @@
 export default {
+  navBar: {
+    if: true
+  },
   tabBar: {
     active: 'latest',
     if: true

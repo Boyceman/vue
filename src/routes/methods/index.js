@@ -6,7 +6,6 @@ export const fetchCells = (url) => {
     this.listLoading({ loading: true })
     apiGenerator({ url }).then(response => {
       const { list } = response.body
-      console.log(list, 8888777)
       // TODO timer need to be removed when api was added
       setTimeout(() => {
         this.cells = this.cells.concat(list)
