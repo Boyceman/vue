@@ -10,9 +10,9 @@
     >
       <history-meeting-cell v-for="(cell, index) in cells"
         ref="cell"
+        :id="cell.id"
         :key="index"
         :cell="cell"
-        :clazz="cell.class"
         :handleClick="handleClick"
         :haveNote="cell.haveNote"
         :haveVideo="cell.haveVideo"

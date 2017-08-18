@@ -6,6 +6,7 @@ export const listData = Mock.mock(`${baseUrl}/list`, {
   errorCode: 0,
   errorMsg: 'null',
   'list|10': [{
+    'id': '@id',
     'name': '@cname （@ctitle(5)）',
     'title': '@ctitle(10,20)',
     'organization': '@csentence(4)',

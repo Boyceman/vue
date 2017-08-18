@@ -1,5 +1,5 @@
 <template>
-  <div class="LatestMeetingCell" :class="clazz" :recommend="cell.recommend" @click="handleClick">
+  <div class="LatestMeetingCell" :recommend="cell.recommend" @click="handleClick">
     <div class="image">
       <img :src="cell.image">
     </div>
@@ -16,7 +16,7 @@
 <script>
   export default {
     name: 'LatestMeetingCell',
-    props: ['cell', 'clazz', 'handleClick', 'haveVideo'],
+    props: ['cell', 'handleClick', 'haveVideo'],
     data () {
       return {}
     },

@@ -12,7 +12,6 @@
         ref="cell"
         :key="index"
         :cell="cell"
-        :clazz="cell.class"
         :handleClick="handleClick"
         :haveVideo="cell.haveVideo"
         :recommend="cell.recommend"

@@ -1,5 +1,5 @@
 <template>
-  <div class="HistoryMeetingCell" :class="clazz" @click="handleClick">
+  <div class="HistoryMeetingCell" @click="handleClick">
     <div class="image">
       <img :src="cell.image">
     </div>
@@ -21,7 +21,7 @@
 <script>
   export default {
     name: 'HistoryMeetingCell',
-    props: ['cell', 'clazz', 'handleClick', 'haveVideo', 'haveDownload', 'haveAudio', 'haveNote'],
+    props: ['cell', 'handleClick', 'haveVideo', 'haveDownload', 'haveAudio', 'haveNote'],
     data () {
       return {}
     },
