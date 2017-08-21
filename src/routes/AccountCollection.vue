@@ -50,12 +50,13 @@
       }
     },
     mounted () {
+      this.tabBarIf({ if: false })
       getStorage(`${this.$route.path}-list`)
         ? this.cells = getStorage(`${this.$route.path}-list`)
         : this.fetchCells()
     },
     methods: {
-      ...mapMutations(['listLoading']),
+      ...mapMutations(['listLoading', 'tabBarIf']),
       fetchCells: fetchCells('/list'),
       refreshCells: refreshCells('/list'),
       handleClick () {
@@ -70,7 +71,7 @@
 
   .AccountCollection {
     overflow: hidden;
-    height: calc(100% - 50px);
+    height: 100%;
     .scroll {
       width: 100%;
       height: calc(100% - 45px);

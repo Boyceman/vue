@@ -4,7 +4,7 @@
       <i class="iconfont icon-back"></i>
     </span>
     <span class="text" :class="hidden ? 'moveLeft': ''">{{ title }}</span>
-    <span v-if="!hidden" class="add"><i class="iconfont icon-add"></i></span>
+    <span v-if="!hidden" class="add" @click="launchMeeting"><i class="iconfont icon-add"></i></span>
   </h1>
 </template>
 
@@ -15,6 +15,11 @@
     data () {
       console.log(this.$props.hidden)
       return {}
+    },
+    methods: {
+      launchMeeting () {
+        this.$router.push('/launch')
+      }
     }
   }
 </script>

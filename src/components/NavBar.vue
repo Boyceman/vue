@@ -4,7 +4,7 @@
       class="iconfont icon-back"></i></span>
     <div class="search">
       <i class="iconfont icon-search"></i>
-      <input type="text" class="input" v-model="value">
+      <input class="input" v-model="value">
     </div>
     <span class="add" @click="launchMeeting"><i class="iconfont icon-add"></i></span>
   </header>

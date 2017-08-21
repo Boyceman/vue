@@ -1,26 +1,17 @@
 <template>
   <div class="LaunchMeeting">
     <title-h1 :title="title" :hidden="true"></title-h1>
-    <mt-tabbar v-model="active">
-      <mt-tab-item id="1">公开会议</mt-tab-item>
-      <mt-tab-item id="2">私人会议</mt-tab-item>
-    </mt-tabbar>
-    <mt-tab-container v-model="active" :swipeable="true">
-      <mt-tab-container-item id="1">
-        <launch-meeting-form :handleConfirm="handleConfirm"></launch-meeting-form>
-      </mt-tab-container-item>
-      <mt-tab-container-item id="2">
-        <launch-meeting-form :handleConfirm="handleConfirm"></launch-meeting-form>
-      </mt-tab-container-item>
-    </mt-tab-container>
+    <launch-meeting-form :startDate="startDate" :endDate="endDate"></launch-meeting-form>
     <mt-datetime-picker
       ref="picker"
       type="datetime"
       v-model="date"
+      :startDate="baseDate"
       year-format="{value} 年"
       month-format="{value} 月"
       date-format="{value} 日"
-      hourFormat="{value} :"
+      hourFormat="{value} 时"
+      minuteFormat="{value} 分"
       @confirm="handleConfirm"
     >
     </mt-datetime-picker>
@@ -45,7 +36,10 @@
       return {
         title: '发起会议',
         date: '',
-        active: '1'
+        baseDate: new Date(),
+        click: '',
+        startDate: '',
+        endDate: ''
       }
     },
     mounted () {
@@ -53,8 +47,21 @@
     },
     methods: {
       ...mapMutations(['navBarIf']),
-      handleConfirm (a) {
-        console.log(a, 'click confirm dataTime')
+      handleConfirm (dateTime) {
+        let [date, time] = dateTime.toLocaleString('en-US', { hour12: false }).split(', ')
+        let dateArray = date.split('/')
+        dateArray.unshift(dateArray.pop())
+        let dateString = dateArray.join('-')
+        const getTime = str => (new Date(str).getTime())
+        if (this.click === 'start') {
+          (!this.endDate || getTime(dateTime) < getTime(this.endDate))
+            ? (this.startDate = `${dateString} ${time}`)
+            : window.alert('hey man, don\'t do this') // TODO add popup
+        } else {
+          (!this.startDate || getTime(dateTime) > getTime(this.startDate))
+            ? (this.endDate = `${dateString} ${time}`)
+            : window.alert('hey man, don\'t do this') // TODO add popup
+        }
       }
     }
   }
@@ -102,6 +109,9 @@
     }
     .mint-tab-container {
       top: p2r(70);
+    }
+    .picker-item {
+      padding: 0 p2r(10);
     }
   }
 </style>
