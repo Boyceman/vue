@@ -54,6 +54,7 @@ export const fetchComments = (url, params) => {
         this.comments = this.comments.concat(data.list)
         this.commentCount = data.count
         setStorage(`${this.$route.path}-list`, this.comments)
+        setStorage(`${this.$route.path}-count`, this.commentCount)
         this.detailCommentLoading({ loading: false })
       }, 800)
     }, filedDate => console.error(filedDate))

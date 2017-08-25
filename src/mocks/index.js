@@ -7,7 +7,7 @@ export const listData = Mock.mock(`${baseUrl}/list`, {
   errorCode: 0,
   errorMsg: 'null',
   'list|10': [{
-    'id': '@id',
+    'id': '@increment',
     'name': '@cname （@ctitle(5)）',
     'title': '@ctitle(10,20)',
     'organization': '@csentence(4)',
@@ -46,7 +46,7 @@ export const infoData = Mock.mock(`${baseUrl}/info`, {
 })
 
 // TODO bind fetch date
-export const detailData = Mock.mock(`${baseUrl}/detail?id=530000199705221669`, {
+export const detailData = Mock.mock(`${baseUrl}/detail?id=1`, {
   'id': 10,
   'title': '在你花一些时日了',
   'startTime': '2017-08-04 18:00:00',

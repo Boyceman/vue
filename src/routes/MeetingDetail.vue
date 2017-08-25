@@ -26,6 +26,7 @@
         <h2 class="title bd">最近互动 <span class="count">({{ commentCount }})</span></h2>
         <comment-infinite-scroll-list
           :cells="comments"
+          :count="commentCount"
           ref="infiniteList"
           :fetchCells="fetchComments"
         >
@@ -84,14 +85,14 @@
       getStorage(`${this.$route.path}-list`)
         ? this.comments = getStorage(`${this.$route.path}-list`)
         : this.fetchComments()
+      getStorage(`${this.$route.path}-count`)
+        ? this.commentCount = getStorage(`${this.$route.path}-count`)
+        : this.fetchComments()
     },
     methods: {
       fetchDetail,
       fetchComments: fetchComments('/comments', { id }),
-      ...mapMutations(['navBarIf', 'tabBarIf', 'detailLoading', 'detailCommentLoading']),
-      progress (a, b, c, d) {
-        console.log(a, b, c, d)
-      }
+      ...mapMutations(['navBarIf', 'tabBarIf', 'detailLoading', 'detailCommentLoading'])
     }
   }
 </script>
@@ -182,7 +183,7 @@
     }
 
     .comment {
-      padding: p2r(16) 0;
+      padding-top: p2r(16);
       .title {
         .count {
           color: #999999;
