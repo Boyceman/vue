@@ -33,7 +33,9 @@
 
 .icon-add:before { content: "\e6b9"; }
 
-.icon-icondownload:before { content: "\e714"; }
+.icon-download:before { content: "\e714"; }
+
+.icon-share:before { content: "\e71d"; }
 
 .icon-phone:before { content: "\e725"; }
 

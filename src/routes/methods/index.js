@@ -31,3 +31,31 @@ export const refreshCells = (url) => {
     }, filedDate => console.error(filedDate))
   }
 }
+
+export function fetchDetail (url, options) {
+  this.detailLoading({ loading: true })
+  apiGenerator({ url, options }).then(response => {
+    const { data } = response
+// TODO timer need to be removed when api was added
+    setTimeout(() => {
+      this.detail = data
+      this.detailLoading({ loading: false })
+    }, 800)
+  }, filedDate => console.error(filedDate))
+}
+
+export const fetchComments = (url, params) => {
+  return function () {
+    this.detailCommentLoading({ loading: true })
+    apiGenerator({ url, params }).then(response => {
+      const { data } = response
+// TODO timer need to be removed when api was added
+      setTimeout(() => {
+        this.comments = this.comments.concat(data.list)
+        this.commentCount = data.count
+        setStorage(`${this.$route.path}-list`, this.comments)
+        this.detailCommentLoading({ loading: false })
+      }, 800)
+    }, filedDate => console.error(filedDate))
+  }
+}

@@ -28,7 +28,7 @@
   import { fetchCells, refreshCells } from './methods'
   import { getStorage } from '@/utils/storage'
   import SelectBar from '@/components/SelectBar'
-  import InfiniteScrollList from '@/components/InfiniteScrollList'
+  import InfiniteScrollList from '@/components/list/InfiniteScrollList'
   import HistoryMeetingCell from '@/components/cell/HistoryMeetingCell'
 
   export default {

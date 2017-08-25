@@ -26,7 +26,7 @@
   import { mapMutations } from 'vuex'
   import { fetchCells, refreshCells } from './methods'
   import { getStorage } from '@/utils/storage'
-  import InfiniteScrollList from '@/components/InfiniteScrollList'
+  import InfiniteScrollList from '@/components/list/InfiniteScrollList'
   import AccountMessageCell from '@/components/cell/AccountMessageCell'
 
   export default {

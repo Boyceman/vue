@@ -1,5 +1,5 @@
 <template>
-  <div class="LatestMeetingCell" :recommend="cell.recommend" @click="handleClick">
+  <div class="LatestMeetingCell" :recommend="cell.recommend" @click="handleClick(cell.id)">
     <div class="image">
       <img :src="cell.image">
     </div>

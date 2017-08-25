@@ -21,11 +21,10 @@
 </template>
 
 <script>
-  import apiGenerator from '@/api'
   import { mapMutations } from 'vuex'
-  import { fetchCells, refreshCells } from './methods'
   import { getStorage } from '@/utils/storage'
-  import InfiniteScrollList from '@/components/InfiniteScrollList'
+  import { fetchCells, refreshCells } from './methods'
+  import InfiniteScrollList from '@/components/list/InfiniteScrollList'
   import LatestMeetingCell from '@/components/cell/LatestMeetingCell'
 
   export default {
@@ -55,8 +54,8 @@
       ...mapMutations(['listLoading', 'tabBarIf', 'navBarIf']),
       fetchCells: fetchCells('/list'),
       refreshCells: refreshCells('/list'),
-      handleClick () {
-        console.log('latestMeeting')
+      handleClick (id) {
+        this.$router.push(`/detail/${id}`)
       }
     }
   }

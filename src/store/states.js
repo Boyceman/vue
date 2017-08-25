@@ -8,5 +8,9 @@ export default {
   },
   list: {
     loading: false
+  },
+  detail: {
+    loading: true,
+    commentLoading: false
   }
 }

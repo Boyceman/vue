@@ -13,7 +13,6 @@
     name: 'Title',
     props: ['title', 'hidden'],
     data () {
-      console.log(this.$props.hidden)
       return {}
     },
     methods: {

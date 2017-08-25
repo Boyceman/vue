@@ -53,7 +53,7 @@
 </script>
 
 <style lang="scss" rel="stylesheet/scss" type="text/scss">
-  @import "../style/functions";
+  @import "../../style/functions";
 
   .InfiniteScrollList {
     .wrap {

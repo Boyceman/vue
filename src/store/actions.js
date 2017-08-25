@@ -19,4 +19,9 @@ export default {
   //   )
   //   logs.group('tabBarActive  --Vuex Mutation', payload)
   // }
+
+  // TODO need to add action
+  fetchDetail ({ commit, state }, detailId) {
+    commit()
+  }
 }

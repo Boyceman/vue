@@ -2,17 +2,16 @@
  * 'this' have to be Vue component
  * otherwise report error with 'this'
  */
-export function loadMore () {
+export function loadMore (view = this.$el.parentNode) {
   const wrap = this.$refs.wrap
-  if (!wrap) return false
+  if (!wrap) return 0
   const wrapPaddingTop = Math.ceil(parseFloat(window.getComputedStyle(wrap).paddingTop))
   const wrapHeight = parseInt(window.getComputedStyle(wrap).height) + wrapPaddingTop * 2
-  const view = this.$el.parentNode
   const viewHeight = parseInt(window.getComputedStyle(view).height)
   const viewScrollTop = view.scrollTop
   const diff = wrapHeight - viewHeight - viewScrollTop
   if (diff <= 0 && !this.loading) {
-    this.$utils.logs.group('load more  --UI', viewScrollTop, 'red')
+    this.$utils.logs.group('load more  --UI', diff, 'red')
     this.$props.fetchCells()
   }
   return viewScrollTop

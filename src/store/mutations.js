@@ -16,5 +16,13 @@ export default {
   'listLoading': function (state, payload) {
     state.list.loading = payload.loading
     logs.group('listLoading  --Vuex Mutation', payload)
+  },
+  'detailLoading': function (state, payload) {
+    state.detail.loading = payload.loading
+    logs.group('detailLoading  --Vuex Mutation', payload)
+  },
+  'detailCommentLoading': function (state, payload) {
+    state.detail.commentLoading = payload.loading
+    logs.group('detailCommentLoading  --Vuex Mutation', payload)
   }
 }

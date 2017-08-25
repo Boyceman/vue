@@ -48,6 +48,7 @@
       }
     },
     methods: {
+      // TODO add form data valid
       openPicker (clazz) {
         this.$parent.$refs.picker.open()
         this.$parent.click = clazz
