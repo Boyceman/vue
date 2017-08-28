@@ -10,7 +10,7 @@ export function loadMore (view = this.$el.parentNode) {
   const viewHeight = parseInt(window.getComputedStyle(view).height)
   const viewScrollTop = view.scrollTop
   const diff = wrapHeight - viewHeight - viewScrollTop
-  if (diff <= 0 && !this.loading) {
+  if (diff <= 0 && !this.loading && !this.loadedAll) {
     this.$utils.logs.group('load more  --UI', diff, 'red')
     this.$props.fetchCells()
   }

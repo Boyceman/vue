@@ -30,13 +30,8 @@
       if (this.storageScrollTop && !this.loading && this.$props.cells.length) {
         this.$el.parentNode.parentNode.scrollTop = this.storageScrollTop
       }
-      if (this.count > this.cells.length) {
-        this.loadedAll = false
-        this.$el.parentNode.parentNode.addEventListener('scroll', this.handleScroll, false)
-      } else {
-        this.loadedAll = true
-        this.$el.parentNode.parentNode.removeEventListener('scroll', this.handleScroll)
-      }
+      this.$el.parentNode.parentNode.addEventListener('scroll', this.handleScroll, false)
+      this.loadedAll = this.count <= this.cells.length
     },
     computed: {
       ...mapState({ loading: state => state.detail.commentLoading })
@@ -44,7 +39,8 @@
     methods: {
       ...mapMutations(['detailCommentLoading']),
       handleScroll: throttle(function () {
-        const scrollTop = loadMore.bind(this)(this.$el.parentNode.parentNode)
+        const scrollDom = this.$el.parentNode.parentNode
+        const scrollTop = loadMore.bind(this)(scrollDom)
         setStorage(`${this.$route.path}-scrollTop`, scrollTop)
         this.storageScrollTop = scrollTop
         hiddenOutViewport.bind(this)()
