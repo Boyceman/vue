@@ -32,15 +32,15 @@
     font-size: p2r(20);
     color: #999999;
     padding: p2r(35);
-    &:after {
+    &:not(:first-child):after {
       content: '';
       position: absolute;
       width: 100%;
       height: 1px;
-      bottom: 0;
+      top: 0;
       left: 0;
       transform: scaleY(.5);
-      border-bottom: 1px dashed #000;
+      border-top: 1px dashed #000;
     }
     .top {
       margin-bottom: p2r(20);
