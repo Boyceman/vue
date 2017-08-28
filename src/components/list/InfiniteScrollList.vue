@@ -4,7 +4,7 @@
       <div class="wrap" ref="wrap">
         <placeholder-cell v-if="!cells.length" v-for="n in 10" :key="n"></placeholder-cell>
         <slot></slot>
-        <mt-spinner type="double-bounce"></mt-spinner>
+        <mt-spinner v-show="!loadedAll" type="double-bounce"></mt-spinner>
       </div>
     </mt-loadmore>
   </div>
@@ -19,13 +19,14 @@
 
   export default {
     name: 'InfiniteScrollList',
-    props: ['cells', 'newCells', 'fetchCells', 'refreshCells', 'handleClick'],
+    props: ['cells', 'count', 'newCells', 'fetchCells', 'refreshCells', 'handleClick'],
     components: {
       PlaceholderCell
     },
     data () {
       return {
-        storageScrollTop: getStorage(`${this.$route.path}-scrollTop`)
+        storageScrollTop: getStorage(`${this.$route.path}-scrollTop`),
+        loadedAll: false
       }
     },
     computed: {
@@ -36,6 +37,7 @@
         this.$parent.$el.scrollTop = this.storageScrollTop
       }
       this.$el.parentNode.addEventListener('scroll', this.handleScroll, false)
+      this.loadedAll = this.count <= this.cells.length
     },
     methods: {
       ...mapMutations(['listLoading']),

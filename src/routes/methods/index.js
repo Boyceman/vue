@@ -5,12 +5,14 @@ export const fetchCells = (url) => {
   return function () {
     this.listLoading({ loading: true })
     apiGenerator({ url }).then(response => {
-      const { list } = response.body
+      const { data: { list, count } } = response
       // TODO timer need to be removed when api was added
       setTimeout(() => {
         this.cells = this.cells.concat(list)
+        this.listCount = count
         this.listLoading({ loading: false })
         setStorage(`${this.$route.path}-list`, this.cells)
+        setStorage(`${this.$route.path}-count`, this.listCount)
       }, 800)
     }, filedDate => console.error(filedDate))
   }

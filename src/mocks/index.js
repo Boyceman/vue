@@ -3,7 +3,7 @@ import Mock from 'mockjs'
 const baseUrl = 'http://g.cn'
 
 export const listData = Mock.mock(`${baseUrl}/list`, {
-  count: 100,
+  count: 50,
   errorCode: 0,
   errorMsg: 'null',
   'list|10': [{
@@ -22,7 +22,7 @@ export const listData = Mock.mock(`${baseUrl}/list`, {
 })
 
 export const messageData = Mock.mock(`${baseUrl}/message`, {
-  count: 100,
+  count: 50,
   errorCode: 0,
   errorMsg: 'null',
   'list|10': [{

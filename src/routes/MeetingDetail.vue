@@ -85,9 +85,7 @@
       getStorage(`${this.$route.path}-list`)
         ? this.comments = getStorage(`${this.$route.path}-list`)
         : this.fetchComments()
-      getStorage(`${this.$route.path}-count`)
-        ? this.commentCount = getStorage(`${this.$route.path}-count`)
-        : this.fetchComments()
+      this.commentCount = getStorage(`${this.$route.path}-count`)
     },
     methods: {
       fetchDetail,

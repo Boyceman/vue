@@ -4,6 +4,7 @@
     <infinite-scroll-list
       :cells="cells"
       ref="infiniteList"
+      :count="listCount"
       :fetchCells="fetchCells"
       :refreshCells="refreshCells"
       :handleClick="handleClick"
@@ -40,7 +41,8 @@
     },
     data () {
       return {
-        cells: []
+        cells: [],
+        listCount: 0
       }
     },
     mounted () {
@@ -49,6 +51,7 @@
       getStorage(`${this.$route.path}-list`)
         ? this.cells = getStorage(`${this.$route.path}-list`)
         : this.fetchCells()
+      this.listCount = getStorage(`${this.$route.path}-count`)
     },
     methods: {
       ...mapMutations(['listLoading', 'tabBarIf', 'navBarIf']),
