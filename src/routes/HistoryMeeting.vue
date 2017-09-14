@@ -28,7 +28,7 @@
   import { mapMutations } from 'vuex'
   import { fetchCells, refreshCells } from './methods'
   import { getStorage } from '@/utils/storage'
-  import SelectBar from '@/components/SelectBar'
+  import SelectBar from '@/components/selector/SelectBar'
   import InfiniteScrollList from '@/components/list/InfiniteScrollList'
   import HistoryMeetingCell from '@/components/cell/HistoryMeetingCell'
 

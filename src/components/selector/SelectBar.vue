@@ -12,7 +12,7 @@
 </template>
 
 <script>
-  import Selector from '@/components/Selector'
+  import Selector from './Selector'
   export default {
     name: 'SelectBar',
     _router: {
@@ -42,7 +42,7 @@
 </script>
 
 <style scoped lang="scss" rel="stylesheet/scss" type="text/scss">
-  @import '../style/functions';
+  @import '../../style/functions';
 
   .SelectBar {
     z-index: 2;

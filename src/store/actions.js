@@ -3,6 +3,7 @@
  */
 import * as logs from '@/utils/logs'
 
+// http://10.10.100.42/3CWeb/searchMeeting.json
 export default {
   // checkout ({ commit, state }, products) {
   //   // 把当前购物车的物品备份起来

@@ -21,7 +21,7 @@
 </script>
 
 <style scoped lang="scss" rel="stylesheet/scss" type="text/scss">
-  @import "../style/functions";
+  @import "../../style/functions";
 
   .Selector {
     box-sizing: border-box;
@@ -43,7 +43,7 @@
         right: p2r(66);
         transition: transform .3s ease-in-out;
         transform-origin: 50% 0;
-        background: url("../assets/type.png") no-repeat center / cover;
+        background: url("../../assets/type.png") no-repeat center / cover;
       }
     }
     &.active {

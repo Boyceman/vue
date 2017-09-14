@@ -24,6 +24,7 @@ export function hiddenOutViewport () {
   const buffer = 1000
   cells.forEach(item => {
     const { top, bottom } = item.$el.getBoundingClientRect()
+    console.log(top, bottom, 8888)
     if (top > -buffer && bottom < window.innerHeight + buffer) {
       item.$el.className = 'LatestMeetingCell'
     } else {

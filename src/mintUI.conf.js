@@ -1,5 +1,6 @@
 module.exports = [
   'Cell',
+  'Popup',
   'Field',
   'Button',
   'Tabbar',
@@ -9,6 +10,7 @@ module.exports = [
   'Spinner',
   'Loadmore',
   'TabContainer',
+  'PaletteButton',
   'DatetimePicker',
   'TabContainerItem'
 ]

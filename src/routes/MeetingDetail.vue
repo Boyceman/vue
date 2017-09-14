@@ -39,6 +39,26 @@
         </comment-infinite-scroll-list>
       </div>
     </div>
+    <div class="action">
+      <span class="write-comment" @click="comment">互动</span>
+      <div class="latest-sign-up" v-if="detail.meetingStatus === 'STARTED'">
+        <span @click="signUp">{{ detail.signupStatus ? '已报名' : '立即参加' }}</span>
+      </div>
+      <div class="history-sign-up" v-else>
+        <span class="note" @click="openNote" :class="{ 'have-document': detail.pdfId }">看速记</span>
+        <div class="border" v-if="!detail.pdfId && !detail.audioId"></div>
+        <span class="audio" @click="openAudio" :class="{ 'have-document': detail.audioId }">听录音</span>
+      </div>
+    </div>
+    <mt-popup
+      v-model="popupVisible"
+      position="bottom">
+      <form class="comment-form">
+        <textarea placeholder="请输入评论，不超过140字"></textarea>
+        <span class="radio" :class="{ anonymous: isAnonymous }" @click="anonymous">匿名</span>
+        <button @click.prevent="submitComment">提交</button>
+      </form>
+    </mt-popup>
   </div>
 </template>
 
@@ -70,7 +90,9 @@
         comments: [],
         extend: false,
         title: '详情',
-        commentCount: 0
+        commentCount: 0,
+        popupVisible: false,
+        isAnonymous: false
       }
     },
     computed: {
@@ -90,7 +112,29 @@
     methods: {
       fetchDetail,
       fetchComments: fetchComments('/comments', { id }),
-      ...mapMutations(['navBarIf', 'tabBarIf', 'detailLoading', 'detailCommentLoading'])
+      ...mapMutations(['navBarIf', 'tabBarIf', 'detailLoading', 'detailCommentLoading']),
+      comment (e) {
+        this.popupVisible = !this.popupVisible
+        console.log(e, 'click comment button')
+      },
+      signUp (e) {
+        if (this.detail.signupStatus) return false
+        console.log(e, 'click sign up button')
+      },
+      openNote (e) {
+        if (!this.detail.pdfId) return false
+        console.log(e, 'click note button')
+      },
+      openAudio (e) {
+        if (!this.detail.audioId) return false
+        console.log(e, 'click audio button')
+      },
+      anonymous (e) {
+        this.isAnonymous = !this.isAnonymous
+      },
+      submitComment (e) {
+        console.log(111111)
+      }
     }
   }
 </script>
@@ -106,7 +150,7 @@
       text-align: left;
       position: relative;
       overflow: scroll;
-      height: calc(100% - 45px);
+      height: calc(100% - 45px - 40px);
       -webkit-overflow-scrolling: touch;
       > div {
         position: relative;
@@ -192,6 +236,127 @@
         font-size: p2r(20);
         color: #666666;
         margin: p2r(2) 0;
+      }
+    }
+
+    .action {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      display: flex;
+      height: p2r(80);
+      line-height: p2r(80);
+      text-align: center;
+      width: 100%;
+      font-size: p2r(32);
+      .write-comment {
+        flex: 1;
+        background: #ffffff;
+      }
+      .latest-sign-up {
+        flex: 2;
+        color: #ffffff;
+        background: #f44d5d;
+      }
+      .history-sign-up {
+        flex: 4;
+        display: flex;
+        span {
+          flex: 1;
+          background: #ccc;
+          &.have-document {
+            background: #f44d5d;
+            color: #ffffff;
+          }
+        }
+        .border {
+          width: 1px;
+          height: 100%;
+          background: #2c3e50;
+          transform: scaleX(.5);
+        }
+      }
+    }
+
+    .mint-popup {
+      width: 100%;
+      height: p2r(300);
+      .comment-form {
+        height: 100%;
+        width: 100%;
+        padding-top: p2r(10);
+        font-size: p2r(28);
+        textarea {
+          box-sizing: border-box;
+          word-break: break-all;
+          text-align: justify;
+          padding: 0 p2r(20) p2r(10) p2r(20);
+          margin-bottom: p2r(13);
+          height: p2r(208);
+          outline: none;
+          width: 100%;
+          resize: none;
+        }
+        .radio {
+          float: left;
+          height: p2r(60);
+          line-height: p2r(60);
+          margin-left: p2r(20);
+          padding-left: p2r(36);
+          position: relative;
+          &.anonymous {
+            &:before {
+              background: #f44d5d;
+              border: none;
+            }
+            &:after {
+              content: '';
+              box-sizing: border-box;
+              position: absolute;
+              left: p2r(11);
+              top: p2r(18);
+              width: p2r(8);
+              height: p2r(14);
+              border-right: 1px solid #fefefe;
+              border-bottom: 1px solid #fefefe;
+              border-radius: 1px;
+              transform: rotate(45deg);
+            }
+          }
+          &:before {
+            content: '';
+            box-sizing: border-box;
+            position: absolute;
+            left: 0;
+            top: p2r(12);
+            width: p2r(30);
+            height: p2r(30);
+            border-radius: 50%;
+            border: 1px solid #2c3e50;
+          }
+        }
+        button {
+          width: p2r(100);
+          height: p2r(60);
+          float: right;
+          margin-right: p2r(20);
+          background: #f44d5d;
+          border: none;
+          border-radius: 3px;
+          color: #ffffff;
+          letter-spacing: 1px;
+          outline: none;
+        }
+        &:after {
+          content: '';
+          position: absolute;
+          left: 0;
+          bottom: p2r(70);
+          height: 1px;
+          width: 100%;
+          transform: scaleY(.5);
+          background: #ccc;
+        }
       }
     }
   }
