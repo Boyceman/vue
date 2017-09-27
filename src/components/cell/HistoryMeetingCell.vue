@@ -58,9 +58,10 @@
     border-left: none;
     border-right: none;
     position: relative;
-    &:not(:first-child) {
-      margin-top: p2r(10);
-    }
+    width: 100%;
+    /*&:not(:first-child) {*/
+      /*margin-top: p2r(10);*/
+    /*}*/
     .image {
       float: left;
       margin-right: p2r(35);

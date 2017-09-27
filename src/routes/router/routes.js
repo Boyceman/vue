@@ -9,6 +9,7 @@ import { _router as LaunchMeeting } from '../LaunchMeeting'
 import { _router as MeetingDetail } from '../MeetingDetail'
 import { _router as MeetingNews } from '../MeetingNews'
 import { _router as PageNotFound } from '../PageNotFound'
+import { _router as demo } from '../demo'
 
 export const routes = [
   Account,
@@ -20,7 +21,8 @@ export const routes = [
   LaunchMeeting,
   MeetingDetail,
   MeetingNews,
-  PageNotFound
+  PageNotFound,
+  demo
 ]
 
 export default combineRoutes(routes)
